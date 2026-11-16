@@ -317,11 +317,11 @@ export function ContactFormsSection({
                 <h3
                   id="form-sesion-heading"
                   className="font-display-montserrat"
-                  style={{ fontSize: 'clamp(1.55rem, 2.5vw, 2rem)', fontWeight: 800, marginTop: '0.3rem', marginBottom: '0.5rem' }}
+                  style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginTop: '0.3rem', marginBottom: '0.5rem' }} /* ~28.5px (26–30px) */
                 >
                   {sessionMeta.title}
                 </h3>
-                <p style={{ color: 'var(--color-gray-300)', fontSize: '0.98rem' }}>
+                <p style={{ color: 'var(--color-gray-300)', fontSize: '1rem', lineHeight: 1.7, maxWidth: '60ch' }}>
                   {sessionMeta.description}
                 </p>
               </div>
@@ -542,11 +542,11 @@ export function ContactFormsSection({
                 <h3
                   id="form-programa-heading"
                   className="font-display-montserrat"
-                  style={{ fontSize: 'clamp(1.55rem, 2.5vw, 2rem)', fontWeight: 800, marginTop: '0.3rem', marginBottom: '0.5rem' }}
+                  style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginTop: '0.3rem', marginBottom: '0.5rem' }} /* ~28.5px (26–30px) */
                 >
                   {programMeta.title}
                 </h3>
-                <p style={{ color: 'var(--color-gray-300)', fontSize: '0.98rem' }}>
+                <p style={{ color: 'var(--color-gray-300)', fontSize: '1rem', lineHeight: 1.7, maxWidth: '60ch' }}>
                   {programMeta.description}
                 </p>
               </div>

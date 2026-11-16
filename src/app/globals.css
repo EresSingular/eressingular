@@ -192,17 +192,23 @@ select {
   position: relative;
 }
 
-/* Encabezado de sección en Montserrat */
+/* Encabezado de sección en Montserrat — Escala tipográfica editorial refinada:
+   - Títulos principales de sección: 38–44 px (2.375rem – 2.75rem)
+   - Títulos secundarios: 26–30 px (1.625rem – 1.875rem)
+   - Preguntas interactivas: 20–23 px (1.25rem – 1.4375rem)
+   - Párrafos: 16–18 px (1rem – 1.125rem)
+   - Etiquetas y textos auxiliares: 12–14 px (0.75rem – 0.875rem)
+*/
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.8125rem;
+  font-size: 0.78rem; /* ~12.5px (rango 12–14px) */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--color-magenta);
-  margin-block-end: 1rem;
+  margin-block-end: 0.9rem;
 }
 
 .section-dark .section-eyebrow {
@@ -212,24 +218,25 @@ select {
 .section-eyebrow::before {
   content: "";
   display: inline-block;
-  width: 28px;
+  width: 26px;
   height: 2px;
   background-color: currentColor;
 }
 
 .section-title {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
-  line-height: 1.14;
+  font-size: clamp(1.75rem, 2.85vw, 2.55rem); /* ~41px en escritorio (rango 38–44px) */
+  line-height: 1.18;
   font-weight: 800;
-  letter-spacing: -0.025em;
-  margin-block-end: 1.25rem;
+  letter-spacing: -0.022em;
+  margin-block-end: 1.15rem;
+  max-width: 26ch;
 }
 
 .section-intro {
-  font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+  font-size: clamp(1rem, 1.12vw, 1.08rem); /* 16–17.3px (rango 16–18px) */
   line-height: 1.75;
-  max-width: 68ch;
+  max-width: 64ch;
   font-weight: 400;
 }
 
@@ -559,43 +566,45 @@ select {
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
 }
 
-/* Portada / Hero optimizada para verse completa en pantallas de notebook */
+/* Portada / Hero optimizada con escala editorial equilibrada */
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.12fr 0.88fr;
   gap: clamp(2rem, 4vw, 3.75rem);
   align-items: center;
 }
 
 .hero-headline {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: clamp(1.95rem, 3.3vw, 3.1rem);
-  line-height: 1.1;
+  font-size: clamp(1.9rem, 3vw, 2.7rem); /* ~43px en escritorio (rango 38–44px) */
+  line-height: 1.14;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-block-end: 1rem;
+  letter-spacing: -0.025em;
+  margin-block-end: 1.1rem;
+  max-width: 22ch;
 }
 
 .hero-question-box {
-  border-inline-start: 4px solid var(--color-magenta-light);
+  border-inline-start: 3.5px solid var(--color-magenta-light);
   padding-inline-start: 1rem;
-  margin-block-end: 1rem;
+  margin-block-end: 1.1rem;
 }
 
 .hero-question {
   font-family: var(--font-montserrat), sans-serif;
   font-weight: 600;
-  font-size: clamp(1.12rem, 1.65vw, 1.42rem);
+  font-size: clamp(1.12rem, 1.48vw, 1.38rem); /* ~22px en escritorio (rango 20–23px) */
   color: var(--color-white);
-  line-height: 1.32;
+  line-height: 1.38;
+  max-width: 44ch;
 }
 
 .hero-supporting {
-  font-size: clamp(0.96rem, 1.15vw, 1.06rem);
+  font-size: clamp(1rem, 1.1vw, 1.08rem); /* 16–17.3px (rango 16–18px) */
   color: var(--color-gray-300);
-  line-height: 1.65;
-  margin-block-end: 1.5rem;
-  max-width: 58ch;
+  line-height: 1.72;
+  margin-block-end: 1.65rem;
+  max-width: 56ch;
 }
 
 .hero-actions {
@@ -704,22 +713,24 @@ select {
 
 .mirror-number {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 1.15rem;
+  font-size: 0.875rem; /* 14px auxiliar */
   font-weight: 800;
   color: var(--color-magenta);
-  min-width: 2.2rem;
+  min-width: 2rem;
+  letter-spacing: 0.06em;
 }
 
 .mirror-question-text {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: clamp(1.15rem, 1.85vw, 1.45rem);
-  line-height: 1.32;
+  font-size: clamp(1.1rem, 1.45vw, 1.35rem); /* 20–21.6px en escritorio (rango 20–23px) */
+  line-height: 1.38;
   font-weight: 700;
   flex: 1;
+  max-width: 58ch;
 }
 
 .mirror-panel {
-  padding: 0 clamp(1.35rem, 2.5vw, 1.85rem) 1.75rem clamp(1.35rem, 2.5vw, 4.8rem);
+  padding: 0 clamp(1.35rem, 2.5vw, 1.85rem) 1.75rem clamp(1.35rem, 2.5vw, 4.4rem);
   border-top: 1px solid var(--color-gray-200);
   padding-top: 1.25rem;
 }
@@ -729,18 +740,18 @@ select {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
-  margin-block: 2.75rem 4rem;
+  margin-block: 2.5rem 3.75rem;
 }
 
 .journey-card {
   background: var(--color-black-elevated);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
-  padding: 1.65rem 1.35rem;
+  padding: 1.55rem 1.3rem;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
   transition: border-color var(--transition-smooth), transform var(--transition-smooth);
 }
 
@@ -751,7 +762,7 @@ select {
 
 .journey-verb {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 1.65vw, 1.5rem); /* 24px */
   font-weight: 800;
   color: var(--color-white);
   letter-spacing: -0.02em;
@@ -810,10 +821,10 @@ select {
 
 .price-display {
   font-family: var(--font-montserrat), sans-serif;
-  font-size: clamp(2.25rem, 3.6vw, 3.1rem);
+  font-size: clamp(1.9rem, 2.6vw, 2.4rem); /* ~38px equilibrado con títulos */
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
 }
 
 /* Modal <dialog> nativo siguiendo modern-web-guidance */

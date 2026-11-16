@@ -289,10 +289,12 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
               <p
                 className="font-display-montserrat"
                 style={{
-                  fontSize: 'clamp(1.18rem, 1.8vw, 1.45rem)',
+                  fontSize: 'clamp(1.12rem, 1.48vw, 1.35rem)', /* ~21.6px sub-frase destacada */
                   fontWeight: 700,
                   color: 'var(--color-white)',
                   marginBottom: '1rem',
+                  maxWidth: '56ch',
+                  lineHeight: 1.4,
                 }}
               >
                 «{content.methodology.philosophyStatement}»
@@ -301,7 +303,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
             </div>
 
             {/* El recorrido: Mirar → Reconocer → Comprender → Elegir → Expresar */}
-            <div style={{ marginTop: '3.5rem' }}>
+            <div style={{ marginTop: '3.25rem' }}>
               <div
                 style={{
                   display: 'flex',
@@ -314,13 +316,13 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 <div>
                   <h3
                     className="font-display-montserrat"
-                    style={{ fontSize: 'clamp(1.45rem, 2.2vw, 1.95rem)', fontWeight: 800 }}
+                    style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800 }} /* ~28.5px (26–30px) */
                   >
                     El recorrido{' '}
                     <span
                       className="font-brittany"
                       style={{
-                        fontSize: '1.35em',
+                        fontSize: '1.28em',
                         fontWeight: 400,
                         color: 'var(--color-magenta-light)',
                         marginLeft: '0.2rem',
@@ -329,7 +331,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                       Eres Singular
                     </span>
                   </h3>
-                  <p style={{ color: 'var(--color-gray-400)', fontSize: '0.98rem', marginTop: '0.25rem' }}>
+                  <p style={{ color: 'var(--color-gray-400)', fontSize: '1rem', marginTop: '0.25rem' }}>
                     {content.methodology.journeySubtitle}
                   </p>
                 </div>
@@ -337,7 +339,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 <div
                   aria-label="Secuencia del recorrido"
                   style={{
-                    fontSize: '0.88rem',
+                    fontSize: '0.84rem', /* ~13.5px auxiliar */
                     fontWeight: 700,
                     color: 'var(--color-magenta-light)',
                     letterSpacing: '0.04em',
@@ -404,13 +406,13 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 <h3
                   id="method-rda-title"
                   className="font-display-montserrat"
-                  style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.1rem)', fontWeight: 800, marginBottom: '0.75rem' }}
+                  style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginBottom: '0.75rem' }} /* ~28.5px (26–30px) */
                 >
                   {content.methodology.proprietaryMethods.rda.acronym} —{' '}
                   {content.methodology.proprietaryMethods.rda.fullName}
                 </h3>
 
-                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.5rem', fontSize: '0.98rem' }}>
+                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.5rem', fontSize: '1rem', lineHeight: 1.7, maxWidth: '56ch' }}>
                   {content.methodology.proprietaryMethods.rda.description}
                 </p>
 
@@ -475,13 +477,13 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 <h3
                   id="method-mapa-title"
                   className="font-display-montserrat"
-                  style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.1rem)', fontWeight: 800, marginBottom: '0.75rem' }}
+                  style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginBottom: '0.75rem' }} /* ~28.5px (26–30px) */
                 >
                   {content.methodology.proprietaryMethods.mapa.acronym} —{' '}
                   {content.methodology.proprietaryMethods.mapa.fullName}
                 </h3>
 
-                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.5rem', fontSize: '0.98rem' }}>
+                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.5rem', fontSize: '1rem', lineHeight: 1.7, maxWidth: '56ch' }}>
                   {content.methodology.proprietaryMethods.mapa.description}
                 </p>
 
@@ -573,13 +575,13 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
             >
               <h3
                 className="font-display-montserrat"
-                style={{ fontSize: 'clamp(1.45rem, 2.3vw, 1.95rem)', fontWeight: 800, marginBottom: '1.5rem' }}
+                style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginBottom: '1.5rem' }} /* ~28.5px (26–30px) */
               >
                 ¿Para quién es{' '}
                 <span
                   className="font-brittany"
                   style={{
-                    fontSize: '1.35em',
+                    fontSize: '1.28em',
                     fontWeight: 400,
                     color: 'var(--color-magenta-light)',
                     marginInline: '0.2rem',
@@ -779,25 +781,26 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 <p
                   className="font-display-montserrat"
                   style={{
-                    fontSize: 'clamp(1.18rem, 1.8vw, 1.4rem)',
+                    fontSize: 'clamp(1.12rem, 1.5vw, 1.32rem)', /* ~21px frase de apertura */
                     fontWeight: 700,
-                    lineHeight: 1.45,
+                    lineHeight: 1.48,
                     color: 'var(--color-black)',
                     marginBottom: '1.5rem',
-                    borderInlineStart: '4px solid var(--color-magenta)',
-                    paddingInlineStart: '1.15rem',
+                    borderInlineStart: '3.5px solid var(--color-magenta)',
+                    paddingInlineStart: '1.1rem',
+                    maxWidth: '56ch',
                   }}
                 >
                   {content.aboutFer.leadParagraph}
                 </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', marginBottom: '2rem', maxWidth: '62ch' }}>
                   {content.aboutFer.storyParagraphs.map((paragraph, idx) => (
                     <p
                       key={idx}
                       style={{
-                        fontSize: '1.03rem',
-                        lineHeight: 1.8,
+                        fontSize: 'clamp(1rem, 1.08vw, 1.06rem)', /* 16–17px párrafo (rango 16–18px) */
+                        lineHeight: 1.78,
                         color: 'var(--color-gray-800)',
                       }}
                     >

@@ -117,9 +117,10 @@ export function ExperiencesSection({
               id={titleId}
               className="font-display-montserrat"
               style={{
-                fontSize: 'clamp(1.5rem, 2.6vw, 2.1rem)',
+                fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', /* ~28.5px título secundario (rango 26–30px) */
                 fontWeight: 800,
                 marginTop: '0.35rem',
+                lineHeight: 1.22,
               }}
             >
               {item.expandedView.headline}
@@ -324,10 +325,10 @@ export function ExperiencesSection({
                 id="exp-session-title"
                 className="font-display-montserrat"
                 style={{
-                  fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)',
+                  fontSize: 'clamp(1.45rem, 2.1vw, 1.82rem)', /* ~29px título secundario (rango 26–30px) */
                   fontWeight: 800,
-                  lineHeight: 1.15,
-                  marginBottom: '0.6rem',
+                  lineHeight: 1.2,
+                  marginBottom: '0.5rem',
                 }}
               >
                 {session.title}
@@ -338,23 +339,24 @@ export function ExperiencesSection({
                   display: 'flex',
                   alignItems: 'baseline',
                   gap: '0.75rem',
-                  margin: '1.25rem 0 1.5rem',
-                  paddingBottom: '1.25rem',
+                  margin: '1.15rem 0 1.35rem',
+                  paddingBottom: '1.15rem',
                   borderBottom: '1px solid var(--color-gray-200)',
                 }}
               >
                 <span className="price-display">{session.priceUSD}</span>
-                <span style={{ fontSize: '0.95rem', color: 'var(--color-gray-600)', fontWeight: 500 }}>
+                <span style={{ fontSize: '0.875rem', color: 'var(--color-gray-600)', fontWeight: 500 }}>
                   · {session.duration}
                 </span>
               </div>
 
               <p
                 style={{
-                  fontSize: '1.08rem',
-                  lineHeight: 1.75,
+                  fontSize: '1.05rem', /* ~16.8px párrafo (rango 16–18px) */
+                  lineHeight: 1.72,
                   color: 'var(--color-black)',
-                  marginBottom: '1rem',
+                  marginBottom: '0.9rem',
+                  maxWidth: '54ch',
                 }}
               >
                 {session.shortDescription}
@@ -362,10 +364,11 @@ export function ExperiencesSection({
 
               <p
                 style={{
-                  fontSize: '1rem',
+                  fontSize: '1rem', /* 16px párrafo (rango 16–18px) */
                   lineHeight: 1.7,
                   color: 'var(--color-gray-600)',
-                  marginBottom: '2rem',
+                  marginBottom: '1.85rem',
+                  maxWidth: '54ch',
                 }}
               >
                 {session.purpose}
@@ -445,17 +448,17 @@ export function ExperiencesSection({
                 id="exp-program-title"
                 className="font-display-montserrat"
                 style={{
-                  fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)',
+                  fontSize: 'clamp(1.45rem, 2.1vw, 1.82rem)', /* ~29px título secundario (rango 26–30px) */
                   fontWeight: 800,
-                  lineHeight: 1.15,
-                  marginBottom: '0.6rem',
+                  lineHeight: 1.2,
+                  marginBottom: '0.5rem',
                 }}
               >
                 <span>Programa </span>
                 <span
                   className="font-brittany"
                   style={{
-                    fontSize: '1.3em',
+                    fontSize: '1.25em',
                     fontWeight: 400,
                     color: 'var(--color-magenta-light)',
                     marginLeft: '0.15rem',
@@ -470,25 +473,26 @@ export function ExperiencesSection({
                   display: 'flex',
                   alignItems: 'baseline',
                   gap: '0.75rem',
-                  margin: '1.25rem 0 1.5rem',
-                  paddingBottom: '1.25rem',
+                  margin: '1.15rem 0 1.35rem',
+                  paddingBottom: '1.15rem',
                   borderBottom: '1px solid rgba(255,255,255,0.14)',
                 }}
               >
                 <span className="price-display" style={{ color: 'var(--color-white)' }}>
                   {program.priceUSD}
                 </span>
-                <span style={{ fontSize: '0.95rem', color: 'var(--color-gray-300)', fontWeight: 500 }}>
+                <span style={{ fontSize: '0.875rem', color: 'var(--color-gray-300)', fontWeight: 500 }}>
                   · {program.duration} ({program.sessionsCount})
                 </span>
               </div>
 
               <p
                 style={{
-                  fontSize: '1.08rem',
-                  lineHeight: 1.75,
+                  fontSize: '1.05rem', /* ~16.8px párrafo (rango 16–18px) */
+                  lineHeight: 1.72,
                   color: 'var(--color-white)',
-                  marginBottom: '1rem',
+                  marginBottom: '0.9rem',
+                  maxWidth: '54ch',
                 }}
               >
                 {program.shortDescription}
@@ -496,10 +500,11 @@ export function ExperiencesSection({
 
               <p
                 style={{
-                  fontSize: '1rem',
+                  fontSize: '1rem', /* 16px párrafo (rango 16–18px) */
                   lineHeight: 1.7,
                   color: 'var(--color-gray-300)',
-                  marginBottom: '2rem',
+                  marginBottom: '1.85rem',
+                  maxWidth: '54ch',
                 }}
               >
                 {program.purpose}

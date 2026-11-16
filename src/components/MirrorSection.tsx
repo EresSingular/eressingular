@@ -27,10 +27,10 @@ export function MirrorSection({ content }: MirrorSectionProps) {
           <p className="section-intro">{content.intro}</p>
           <p
             style={{
-              marginTop: '0.85rem',
-              fontSize: '0.9rem',
+              marginTop: '0.75rem',
+              fontSize: '0.84rem', /* ~13.5px auxiliar (rango 12–14px) */
               color: 'var(--color-magenta)',
-              fontWeight: 500,
+              fontWeight: 600,
             }}
           >
             {content.interactionHint}
@@ -98,11 +98,11 @@ export function MirrorSection({ content }: MirrorSectionProps) {
                 >
                   <p
                     style={{
-                      fontSize: '1.06rem',
+                      fontSize: '1.05rem', /* ~16.8px párrafo (rango 16–18px) */
                       color: 'var(--color-gray-800)',
                       lineHeight: 1.75,
                       marginBottom: '1.15rem',
-                      maxWidth: '66ch',
+                      maxWidth: '62ch',
                     }}
                   >
                     {item.reflectionPrompt}
@@ -168,10 +168,11 @@ export function MirrorSection({ content }: MirrorSectionProps) {
           <blockquote
             className="font-display-montserrat"
             style={{
-              fontSize: 'clamp(1.2rem, 1.9vw, 1.55rem)',
+              fontSize: 'clamp(1.2rem, 1.65vw, 1.45rem)', /* ~23px cita destacada */
               fontWeight: 700,
               color: 'var(--color-black)',
               maxWidth: '42ch',
+              lineHeight: 1.38,
             }}
           >
             {content.closingQuote}
