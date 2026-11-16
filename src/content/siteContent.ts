@@ -843,10 +843,11 @@ export const siteContentEs: SiteContent = {
   },
 };
 
+import { siteContentEn } from './siteContentEn';
+
 export const siteDictionary: Record<Locale, SiteContent> = {
   es: siteContentEs,
-  // Arquitectura lista para expandir a inglés y francés manteniendo la misma estructura tipada:
-  en: siteContentEs,
+  en: siteContentEn,
   fr: siteContentEs,
 };
 

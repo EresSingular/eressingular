@@ -2,14 +2,21 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
-import type { SiteContent } from '@/content/siteContent';
+import type { SiteContent, Locale } from '@/content/siteContent';
 
 interface NavbarProps {
   content: SiteContent;
+  currentLocale: Locale;
+  onLocaleChange: (locale: Locale) => void;
   onSelectExperienceForm: (tab: 'sesion' | 'programa') => void;
 }
 
-export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
+export function Navbar({
+  content,
+  currentLocale,
+  onLocaleChange,
+  onSelectExperienceForm,
+}: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -78,7 +85,30 @@ export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
             </ul>
           </nav>
 
-          <div className="header-pills" aria-label="Accesos directos a las dos experiencias">
+          <div className="header-pills" aria-label="Selector de idioma y accesos directos">
+            {/* Selector de idioma ES / EN */}
+            <div className="lang-switcher" role="group" aria-label="Language selection">
+              <button
+                type="button"
+                onClick={() => onLocaleChange('es')}
+                className={`lang-btn ${currentLocale === 'es' ? 'is-active' : ''}`}
+                aria-pressed={currentLocale === 'es'}
+                aria-label="Cambiar a Español"
+              >
+                ES
+              </button>
+              <span className="lang-divider" aria-hidden="true">/</span>
+              <button
+                type="button"
+                onClick={() => onLocaleChange('en')}
+                className={`lang-btn ${currentLocale === 'en' ? 'is-active' : ''}`}
+                aria-pressed={currentLocale === 'en'}
+                aria-label="Switch to English"
+              >
+                EN
+              </button>
+            </div>
+
             <button
               type="button"
               onClick={() => handleQuickExperienceClick('sesion')}
@@ -111,6 +141,47 @@ export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
         {mobileOpen && (
           <div id="mobile-nav-drawer" className="mobile-nav-drawer">
             <nav aria-label="Navegación móvil">
+              {/* Selector de idioma en móvil */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  paddingBottom: '0.85rem',
+                  marginBottom: '0.75rem',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                }}
+              >
+                <span style={{ fontSize: '0.85rem', color: 'var(--color-gray-400)', fontWeight: 600 }}>
+                  {currentLocale === 'es' ? 'Idioma' : 'Language'}
+                </span>
+                <div className="lang-switcher" role="group" aria-label="Language selection">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onLocaleChange('es');
+                      setMobileOpen(false);
+                    }}
+                    className={`lang-btn ${currentLocale === 'es' ? 'is-active' : ''}`}
+                    aria-pressed={currentLocale === 'es'}
+                  >
+                    ES
+                  </button>
+                  <span className="lang-divider" aria-hidden="true">/</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onLocaleChange('en');
+                      setMobileOpen(false);
+                    }}
+                    className={`lang-btn ${currentLocale === 'en' ? 'is-active' : ''}`}
+                    aria-pressed={currentLocale === 'en'}
+                  >
+                    EN
+                  </button>
+                </div>
+              </div>
+
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {content.nav.items.map((item) => (
                   <li key={item.href}>
