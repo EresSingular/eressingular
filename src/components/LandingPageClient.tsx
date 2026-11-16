@@ -41,13 +41,18 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
         <section
           id="inicio"
           className="section-dark"
-          style={{ paddingTop: 'clamp(3rem, 6vw, 5.5rem)' }}
+          style={{
+            paddingTop: 'clamp(1.5rem, 3vw, 2.5rem)',
+            paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)',
+          }}
           aria-labelledby="hero-headline"
         >
           <div className="container">
             <div className="hero-grid">
               <div>
-                <span className="section-eyebrow">{content.hero.eyebrow}</span>
+                <span className="section-eyebrow" style={{ marginBottom: '0.65rem' }}>
+                  {content.hero.eyebrow}
+                </span>
 
                 <h1 id="hero-headline" className="hero-headline">
                   {content.hero.headline}
@@ -69,49 +74,9 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                     <span>{content.hero.secondaryCta.label}</span>
                   </a>
                 </div>
-
-                {/* Marcador claramente identificado para el video de presentación de Fer */}
-                <div className="video-slot-card">
-                  <div>
-                    <div
-                      style={{
-                        fontSize: '0.72rem',
-                        fontWeight: 700,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: 'var(--color-magenta-light)',
-                      }}
-                    >
-                      {content.hero.videoPlaceholder.badge}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: '0.96rem',
-                        fontWeight: 700,
-                        color: 'var(--color-white)',
-                        marginTop: '0.2rem',
-                      }}
-                    >
-                      {content.hero.videoPlaceholder.title}
-                    </div>
-                    <div style={{ fontSize: '0.82rem', color: 'var(--color-gray-400)' }}>
-                      {content.hero.videoPlaceholder.durationHint}
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => videoDialogRef.current?.showModal()}
-                    className="btn btn-outline-dark"
-                    style={{ padding: '0.6rem 1.1rem', minHeight: '46px', flexShrink: 0 }}
-                  >
-                    <Play size={16} aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }} />
-                    <span>Ver espacio de video</span>
-                  </button>
-                </div>
               </div>
 
-              {/* Retrato auténtico de Fer */}
+              {/* Retrato auténtico de Fer completo en pantalla */}
               <div>
                 <figure className="hero-portrait-card">
                   <Image
@@ -131,7 +96,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                       <div
                         className="font-gistesy"
                         style={{
-                          fontSize: '1.85rem',
+                          fontSize: '1.75rem',
                           color: 'var(--color-white)',
                           lineHeight: 1.1,
                         }}
@@ -139,14 +104,14 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                         {content.brand.authorFullName}{' '}
                         <span
                           className="font-display-montserrat"
-                          style={{ fontSize: '1rem', fontWeight: 600 }}
+                          style={{ fontSize: '0.95rem', fontWeight: 600 }}
                         >
                           ツ
                         </span>
                       </div>
                       <div
                         style={{
-                          fontSize: '0.8rem',
+                          fontSize: '0.78rem',
                           fontWeight: 600,
                           color: 'var(--color-magenta-light)',
                           marginTop: '0.15rem',
@@ -170,6 +135,55 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   </figcaption>
                 </figure>
               </div>
+            </div>
+
+            {/* Cajita de video alargada a todo el ancho de las dos columnas */}
+            <div className="video-slot-card">
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  gap: '0.65rem 1.5rem',
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-magenta-light)',
+                    background: 'rgba(255, 3, 154, 0.1)',
+                    padding: '0.35rem 0.75rem',
+                    borderRadius: '999px',
+                  }}
+                >
+                  {content.hero.videoPlaceholder.badge}
+                </span>
+                <span
+                  style={{
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    color: 'var(--color-white)',
+                  }}
+                >
+                  {content.hero.videoPlaceholder.title}
+                </span>
+                <span style={{ fontSize: '0.86rem', color: 'var(--color-gray-400)' }}>
+                  · {content.hero.videoPlaceholder.durationHint}
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => videoDialogRef.current?.showModal()}
+                className="btn btn-outline-dark"
+                style={{ padding: '0.6rem 1.25rem', minHeight: '46px', flexShrink: 0 }}
+              >
+                <Play size={16} aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }} />
+                <span>Ver espacio de video</span>
+              </button>
             </div>
           </div>
 
