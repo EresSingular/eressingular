@@ -11,6 +11,10 @@ import {
   Camera,
   X,
   Check,
+  Linkedin,
+  Instagram,
+  Youtube,
+  Mail,
 } from 'lucide-react';
 import type { SiteContent } from '@/content/siteContent';
 import { Navbar } from './Navbar';
@@ -22,6 +26,20 @@ import { GistesySignature } from './GistesySignature';
 
 interface LandingPageClientProps {
   content: SiteContent;
+}
+
+function TikTokIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74l-.07-.11a2.89 2.89 0 0 1 2.37-4.53c.4 0 .79.08 1.14.23V9.45a6.34 6.34 0 0 0-1.14-.1 6.28 6.28 0 0 0-6.27 6.29 6.28 6.28 0 0 0 6.28 6.29c3.46 0 6.28-2.81 6.28-6.29V8.72a8.23 8.23 0 0 0 4.89 1.58V6.83a4.83 4.83 0 0 1-1.06-.14z" />
+    </svg>
+  );
 }
 
 export function LandingPageClient({ content }: LandingPageClientProps) {
@@ -893,37 +911,89 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
         <div className="container">
           <div className="footer-top-grid">
             {/* Izquierda: Marca y manifiesto */}
-            <div style={{ maxWidth: '42ch' }}>
+            <div className="footer-brand-col">
               <div
                 className="font-brittany"
                 style={{
-                  fontSize: '1.75rem',
+                  fontSize: '1.65rem',
                   color: '#FFFFFF',
-                  marginBottom: '0.75rem',
+                  marginBottom: '0.65rem',
                   lineHeight: 1.1,
                 }}
               >
                 Eres Singular
               </div>
-              <p style={{ color: 'var(--color-gray-300)', fontSize: '0.88rem', lineHeight: 1.7 }}>
+              <p style={{ color: 'var(--color-gray-300)', fontSize: '0.86rem', lineHeight: 1.65 }}>
                 {content.footer.manifesto}
               </p>
             </div>
 
-            {/* Centro: Navegación compacta */}
-            <nav aria-label="Navegación pie de página" className="footer-nav">
-              {content.nav.items.map((item) => (
-                <a key={item.href} href={item.href} className="footer-nav-link">
-                  {item.label}
+            {/* Centro: Redes Sociales & Contacto Directo */}
+            <div className="footer-social-col">
+              <span className="footer-social-label">CONECTEMOS</span>
+              <div className="footer-social-icons">
+                <a
+                  href={content.footer.socialLinks.find((s) => s.id === 'linkedin')?.href || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-social-btn"
+                  aria-label="LinkedIn de María Fernanda Cortés Espinosa"
+                  title="LinkedIn"
+                >
+                  <Linkedin size={18} aria-hidden="true" />
                 </a>
-              ))}
-            </nav>
+                <a
+                  href={content.footer.socialLinks.find((s) => s.id === 'instagram')?.href || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-social-btn"
+                  aria-label="Instagram @fer.eressingular"
+                  title="Instagram"
+                >
+                  <Instagram size={18} aria-hidden="true" />
+                </a>
+                <a
+                  href={content.footer.socialLinks.find((s) => s.id === 'youtube')?.href || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-social-btn"
+                  aria-label="Canal de YouTube @Fer.EresSingular"
+                  title="YouTube"
+                >
+                  <Youtube size={18} aria-hidden="true" />
+                </a>
+                <a
+                  href={content.footer.socialLinks.find((s) => s.id === 'tiktok')?.href || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-social-btn"
+                  aria-label="TikTok @fer.huellapersonal"
+                  title="TikTok"
+                >
+                  <TikTokIcon size={18} />
+                </a>
+                <a
+                  href={`mailto:${content.footer.contactEmail}`}
+                  className="footer-social-btn"
+                  aria-label={`Escribir a ${content.footer.contactEmail}`}
+                  title="Email"
+                >
+                  <Mail size={18} aria-hidden="true" />
+                </a>
+              </div>
+              <a
+                href={`mailto:${content.footer.contactEmail}`}
+                className="footer-email-link"
+              >
+                {content.footer.contactEmail}
+              </a>
+            </div>
 
-            {/* Derecha: Firma armónica */}
-            <div className="footer-signature">
+            {/* Derecha: Firma armónica y equilibrada */}
+            <div className="footer-signature-col">
               <GistesySignature
-                fontSize="1.48rem"
-                smileyFontSize="0.85rem"
+                fontSize="1.35rem"
+                smileyFontSize="0.8rem"
                 color="var(--color-white)"
               />
               <span
@@ -931,11 +1001,37 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   color: 'var(--color-magenta-light)',
                   fontSize: '0.78rem',
                   fontWeight: 700,
-                  letterSpacing: '0.02em',
+                  letterSpacing: '0.04em',
                 }}
               >
                 {content.brand.authorRole}
               </span>
+            </div>
+          </div>
+
+          {/* El Camino — Logotipos de trayectoria (no clickables aún) */}
+          <div className="footer-journey-section">
+            <span className="footer-journey-label">{content.footer.journey.label}</span>
+            <div className="footer-journey-row">
+              {content.footer.journey.brands.map((b) => (
+                <div
+                  key={b.id}
+                  className="footer-journey-item"
+                  title={b.name}
+                  aria-label={b.name}
+                >
+                  <img
+                    src={b.logoSrc}
+                    alt={b.alt}
+                    style={{
+                      height: `${b.height}px`,
+                      width: 'auto',
+                      maxHeight: '44px',
+                      objectFit: 'contain',
+                    }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
 

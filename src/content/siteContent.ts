@@ -227,6 +227,22 @@ export interface SiteContent {
   };
   footer: {
     manifesto: string;
+    socialLinks: Array<{
+      id: string;
+      label: string;
+      href: string;
+    }>;
+    contactEmail: string;
+    journey: {
+      label: string;
+      brands: Array<{
+        id: string;
+        name: string;
+        logoSrc: string;
+        alt: string;
+        height: number;
+      }>;
+    };
     copyright: string;
     futureLanguagesNote: string;
   };
@@ -748,6 +764,69 @@ export const siteContentEs: SiteContent = {
   footer: {
     manifesto:
       'Eres Singular es una invitación a reconocerse para expresarse auténticamente en el mundo. La tecnología sostiene la experiencia. La persona es el centro.',
+    socialLinks: [
+      {
+        id: 'linkedin',
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/mar%C3%ADafernandacortesespinosa/',
+      },
+      {
+        id: 'instagram',
+        label: 'Instagram',
+        href: 'https://www.instagram.com/fer.eressingular/',
+      },
+      {
+        id: 'youtube',
+        label: 'YouTube',
+        href: 'https://www.youtube.com/@Fer.EresSingular',
+      },
+      {
+        id: 'tiktok',
+        label: 'TikTok',
+        href: 'https://www.tiktok.com/@fer.huellapersonal',
+      },
+    ],
+    contactEmail: 'lafer.mentora@gmail.com',
+    journey: {
+      label: 'EL CAMINO',
+      brands: [
+        {
+          id: 'eres-singular',
+          name: 'Eres Singular',
+          logoSrc: '/images/journey/eres-singular.png',
+          alt: 'Eres Singular',
+          height: 32,
+        },
+        {
+          id: 'doubbleyou',
+          name: 'DouBBleYou',
+          logoSrc: '/images/journey/doubbleyou.png',
+          alt: 'DouBBleYou',
+          height: 44,
+        },
+        {
+          id: 'netthinking',
+          name: 'NetThinking',
+          logoSrc: '/images/journey/netthinking.png',
+          alt: 'NetThinking',
+          height: 28,
+        },
+        {
+          id: 'mindyou',
+          name: 'MindYou',
+          logoSrc: '/images/journey/mindfer.png',
+          alt: 'MindYou',
+          height: 32,
+        },
+        {
+          id: 'imcebra',
+          name: 'ImCebra',
+          logoSrc: '/images/journey/imcebra.png',
+          alt: 'ImCebra',
+          height: 32,
+        },
+      ],
+    },
     copyright: `© ${new Date().getFullYear()} Eres Singular · Fer (Ma. Fernanda Cortés Espinosa ツ) · Todos los derechos reservados.`,
     futureLanguagesNote: 'Edición en Español · Arquitectura preparada para Español, English y Français.',
   },
