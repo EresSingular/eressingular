@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Check, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 
+import type { Locale } from '@/content/siteContent';
+
 export interface AudienceItem {
   title: string;
   description: string;
@@ -11,9 +13,10 @@ export interface AudienceItem {
 interface AudienceCarouselProps {
   audiences: AudienceItem[];
   title: string;
+  locale?: Locale;
 }
 
-export function AudienceCarousel({ audiences, title }: AudienceCarouselProps) {
+export function AudienceCarousel({ audiences, title, locale = 'es' }: AudienceCarouselProps) {
   // Duplicamos la lista para permitir un bucle infinito fluido
   const extendedItems = [...audiences, ...audiences];
   const total = audiences.length;
@@ -101,14 +104,28 @@ export function AudienceCarousel({ audiences, title }: AudienceCarouselProps) {
       <div className="audience-carousel-header">
         <div>
           <h3 className="audience-carousel-title font-display-montserrat">
-            ¿Para quién es{' '}
-            <span className="font-brittany audience-carousel-brittany">
-              Eres Singular
-            </span>
-            ?
+            {locale === 'en' ? (
+              <>
+                Who is{' '}
+                <span className="font-brittany audience-carousel-brittany">
+                  Eres Singular
+                </span>
+                {' '}for?
+              </>
+            ) : (
+              <>
+                ¿Para quién es{' '}
+                <span className="font-brittany audience-carousel-brittany">
+                  Eres Singular
+                </span>
+                ?
+              </>
+            )}
           </h3>
           <p className="audience-carousel-subtitle">
-            Perfiles y momentos de vida para los que está diseñado este acompañamiento.
+            {locale === 'en'
+              ? 'Profiles and life moments this mentorship is designed for.'
+              : 'Perfiles y momentos de vida para los que está diseñado este acompañamiento.'}
           </p>
         </div>
 

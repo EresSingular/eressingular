@@ -2,19 +2,74 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Send, ShieldCheck, RotateCcw } from 'lucide-react';
-import type { SiteContent } from '@/content/siteContent';
+import type { SiteContent, Locale } from '@/content/siteContent';
 
 interface ContactFormsSectionProps {
   content: SiteContent['nextStep'];
   activeTab: 'sesion' | 'programa';
+  locale?: Locale;
   onTabChange: (tab: 'sesion' | 'programa') => void;
 }
 
 export function ContactFormsSection({
   content,
   activeTab,
+  locale = 'es',
   onTabChange,
 }: ContactFormsSectionProps) {
+  const t = locale === 'en' ? {
+    option1Badge: 'Option 01 · 80 minutes',
+    option1Title: 'Book 1-on-1 session',
+    option2Badge: 'Option 02 · Three months (13 sessions)',
+    option2Title: 'Inquire about the program',
+    nameLabel: 'Full name',
+    nameHint: 'What do you like to be called?',
+    nameError: 'Please enter your full name (minimum 2 characters).',
+    emailLabel: 'Email address',
+    emailHint: 'Format: name@example.com — Fer will reply to this address.',
+    emailError: 'Please enter a valid email address (e.g. you@example.com).',
+    countryLabel: 'Country and city',
+    countryHint: 'To coordinate meetings according to your time zone.',
+    countryError: 'Please indicate your country or city (minimum 2 characters).',
+    phoneLabel: 'WhatsApp / Phone (optional)',
+    phoneHint: 'International format: +Country Area Number (e.g. +1 555 123 4567).',
+    sessionGoalLabel: 'What would you like to explore or clarify in your 80-minute session?',
+    sessionGoalHint: 'A few lines on your current moment or the question that brings you here.',
+    sessionGoalError: 'Please briefly describe (at least 10 characters) what you wish to explore.',
+    programGoalLabel: 'Tell me about your current stage and what you wish to develop in these 3 months',
+    programGoalHint: 'Share your background, project, or the change you seek.',
+    programGoalError: 'Please describe (at least 10 characters) what you seek to work on in the program.',
+    submittedSessionBadge: 'Inquiry received · 1-on-1 Session (US$ 150)',
+    submittedProgramBadge: 'Inquiry received · Eres Singular Program (US$ 1,490)',
+    thankYou: 'Thank you,',
+    sendAnother: 'Send another inquiry or edit my details',
+  } : {
+    option1Badge: 'Opción 01 · 80 minutos',
+    option1Title: 'Reservar sesión individual',
+    option2Badge: 'Opción 02 · Tres meses (13 sesiones)',
+    option2Title: 'Solicitar información del programa',
+    nameLabel: 'Nombre completo',
+    nameHint: '¿Cómo te gusta que te llamen?',
+    nameError: 'Por favor ingresa tu nombre completo (mínimo 2 caracteres).',
+    emailLabel: 'Correo electrónico',
+    emailHint: 'Formato: nombre@ejemplo.com — aquí recibirás la respuesta de Fer.',
+    emailError: 'Ingresa un correo electrónico válido en el formato tu@correo.com.',
+    countryLabel: 'País y ciudad',
+    countryHint: 'Para coordinar el horario según tu zona horaria.',
+    countryError: 'Indica desde qué país o ciudad nos escribes.',
+    phoneLabel: 'WhatsApp / Teléfono (opcional)',
+    phoneHint: 'Incluye el código de tu país (ej. +56, +52, +34, +1).',
+    sessionGoalLabel: '¿Qué te gustaría mirar o trabajar en tu sesión de 80 minutos?',
+    sessionGoalHint: 'Unas breves líneas sobre el momento o inquietud que te trae aquí.',
+    sessionGoalError: 'Cuéntame brevemente (al menos 10 caracteres) qué te gustaría explorar en la sesión.',
+    programGoalLabel: 'Cuéntame de tu etapa actual y qué buscas construir en estos tres meses',
+    programGoalHint: 'Comparte brevemente tu momento profesional o personal actual.',
+    programGoalError: 'Cuéntame brevemente (al menos 10 caracteres) qué buscas trabajar en el programa.',
+    submittedSessionBadge: 'Solicitud registrada · Sesión individual (US$ 150)',
+    submittedProgramBadge: 'Solicitud registrada · Programa Eres Singular (US$ 1.490)',
+    thankYou: 'Gracias,',
+    sendAnother: 'Enviar otra consulta o editar mis datos',
+  };
   const [submittedSession, setSubmittedSession] = useState<{
     name: string;
     email: string;
@@ -193,10 +248,10 @@ export function ContactFormsSection({
           >
             <div>
               <div style={{ fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-magenta-light)' }}>
-                Opción 01 · 80 minutos
+                {t.option1Badge}
               </div>
               <div style={{ fontSize: '1.05rem', marginTop: '0.2rem' }}>
-                Reservar sesión individual
+                {t.option1Title}
               </div>
             </div>
             <span
@@ -218,10 +273,10 @@ export function ContactFormsSection({
           >
             <div>
               <div style={{ fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-magenta-light)' }}>
-                Opción 02 · Tres meses (13 sesiones)
+                {t.option2Badge}
               </div>
               <div style={{ fontSize: '1.05rem', marginTop: '0.2rem' }}>
-                Solicitar información del programa
+                {t.option2Title}
               </div>
             </div>
             <span
@@ -255,7 +310,7 @@ export function ContactFormsSection({
                 }}
               >
                 <CheckCircle2 size={22} aria-hidden="true" />
-                <span>Solicitud registrada · Sesión individual (US$ 150)</span>
+                <span>{t.submittedSessionBadge}</span>
               </div>
 
               <h3
@@ -266,7 +321,7 @@ export function ContactFormsSection({
               </h3>
 
               <p style={{ color: 'var(--color-gray-300)', fontSize: '1.05rem', marginBottom: '1.25rem' }}>
-                Gracias, <strong>{submittedSession.name}</strong> ({submittedSession.email} ·{' '}
+                {t.thankYou} <strong>{submittedSession.name}</strong> ({submittedSession.email} ·{' '}
                 {submittedSession.country}). {sessionMeta.confirmationMessage}
               </p>
 
@@ -292,7 +347,7 @@ export function ContactFormsSection({
                 className="btn btn-outline-dark"
               >
                 <RotateCcw size={16} aria-hidden="true" />
-                <span>Enviar otra consulta o editar mis datos</span>
+                <span>{t.sendAnother}</span>
               </button>
             </div>
           ) : (
@@ -328,10 +383,10 @@ export function ContactFormsSection({
 
               <div className="form-field">
                 <label htmlFor="sesion-full-name" className="form-label">
-                  Nombre completo <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
+                  {t.nameLabel} <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                 </label>
                 <span id="sesion-name-hint" className="form-hint">
-                  ¿Cómo te gusta que te llamen?
+                  {t.nameHint}
                 </span>
                 <input
                   type="text"
@@ -347,16 +402,16 @@ export function ContactFormsSection({
                   className="form-input"
                 />
                 <div id="sesion-name-error" className="form-error-msg">
-                  <span role="img" aria-label="Error">❌</span> Por favor ingresa tu nombre completo (mínimo 2 caracteres).
+                  <span role="img" aria-label="Error">❌</span> {t.nameError}
                 </div>
               </div>
 
               <div className="form-field">
                 <label htmlFor="sesion-email" className="form-label">
-                  Correo electrónico <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
+                  {t.emailLabel} <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                 </label>
                 <span id="sesion-email-hint" className="form-hint">
-                  Formato: nombre@ejemplo.com — aquí recibirás la respuesta de Fer.
+                  {t.emailHint}
                 </span>
                 <input
                   type="email"
@@ -373,7 +428,7 @@ export function ContactFormsSection({
                   className="form-input"
                 />
                 <div id="sesion-email-error" className="form-error-msg">
-                  <span role="img" aria-label="Error">❌</span> Ingresa un correo electrónico válido en el formato tu@correo.com.
+                  <span role="img" aria-label="Error">❌</span> {t.emailError}
                 </div>
               </div>
 
@@ -386,10 +441,10 @@ export function ContactFormsSection({
               >
                 <div className="form-field">
                   <label htmlFor="sesion-country" className="form-label">
-                    País y ciudad <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
+                    {t.countryLabel} <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                   </label>
                   <span id="sesion-country-hint" className="form-hint">
-                    Para coordinar el horario según tu zona horaria.
+                    {t.countryHint}
                   </span>
                   <input
                     type="text"
@@ -404,16 +459,16 @@ export function ContactFormsSection({
                     className="form-input"
                   />
                   <div id="sesion-country-error" className="form-error-msg">
-                    <span role="img" aria-label="Error">❌</span> Indica desde qué país o ciudad nos escribes.
+                    <span role="img" aria-label="Error">❌</span> {t.countryError}
                   </div>
                 </div>
 
                 <div className="form-field">
                   <label htmlFor="sesion-phone" className="form-label">
-                    WhatsApp / Teléfono (opcional)
+                    {t.phoneLabel}
                   </label>
                   <span id="sesion-phone-hint" className="form-hint">
-                    Incluye el código de tu país (ej. +56, +52, +34).
+                    {t.phoneHint}
                   </span>
                   <input
                     type="tel"
@@ -429,11 +484,11 @@ export function ContactFormsSection({
 
               <div className="form-field">
                 <label htmlFor="sesion-context" className="form-label">
-                  ¿Qué te gustaría mirar o trabajar en tu sesión de 80 minutos?{' '}
+                  {t.sessionGoalLabel}{' '}
                   <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                 </label>
                 <span id="sesion-context-hint" className="form-hint">
-                  Unas breves líneas sobre el momento o inquietud que te trae aquí.
+                  {t.sessionGoalHint}
                 </span>
                 <textarea
                   id="sesion-context"
@@ -446,7 +501,7 @@ export function ContactFormsSection({
                   className="form-textarea"
                 />
                 <div id="sesion-context-error" className="form-error-msg">
-                  <span role="img" aria-label="Error">❌</span> Cuéntame brevemente (al menos 10 caracteres) qué te gustaría explorar en la sesión.
+                  <span role="img" aria-label="Error">❌</span> {t.sessionGoalError}
                 </div>
               </div>
 
@@ -480,7 +535,7 @@ export function ContactFormsSection({
                 }}
               >
                 <CheckCircle2 size={22} aria-hidden="true" />
-                <span>Solicitud registrada · Programa Eres Singular (US$ 1.490)</span>
+                <span>{t.submittedProgramBadge}</span>
               </div>
 
               <h3
@@ -491,7 +546,7 @@ export function ContactFormsSection({
               </h3>
 
               <p style={{ color: 'var(--color-gray-300)', fontSize: '1.05rem', marginBottom: '1.25rem' }}>
-                Gracias, <strong>{submittedProgram.name}</strong> ({submittedProgram.email} ·{' '}
+                {t.thankYou} <strong>{submittedProgram.name}</strong> ({submittedProgram.email} ·{' '}
                 {submittedProgram.country}). {programMeta.confirmationMessage}
               </p>
 
@@ -517,7 +572,7 @@ export function ContactFormsSection({
                 className="btn btn-outline-dark"
               >
                 <RotateCcw size={16} aria-hidden="true" />
-                <span>Enviar otra consulta o editar mis datos</span>
+                <span>{t.sendAnother}</span>
               </button>
             </div>
           ) : (
@@ -553,10 +608,10 @@ export function ContactFormsSection({
 
               <div className="form-field">
                 <label htmlFor="programa-full-name" className="form-label">
-                  Nombre completo <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
+                  {t.nameLabel} <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                 </label>
                 <span id="programa-name-hint" className="form-hint">
-                  ¿Cómo te gusta que te llamen?
+                  {t.nameHint}
                 </span>
                 <input
                   type="text"
@@ -572,16 +627,16 @@ export function ContactFormsSection({
                   className="form-input"
                 />
                 <div id="programa-name-error" className="form-error-msg">
-                  <span role="img" aria-label="Error">❌</span> Por favor ingresa tu nombre completo (mínimo 2 caracteres).
+                  <span role="img" aria-label="Error">❌</span> {t.nameError}
                 </div>
               </div>
 
               <div className="form-field">
                 <label htmlFor="programa-email" className="form-label">
-                  Correo electrónico <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
+                  {t.emailLabel} <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                 </label>
                 <span id="programa-email-hint" className="form-hint">
-                  Formato: nombre@ejemplo.com — te contactaré directamente a este correo.
+                  {t.emailHint}
                 </span>
                 <input
                   type="email"
@@ -598,7 +653,7 @@ export function ContactFormsSection({
                   className="form-input"
                 />
                 <div id="programa-email-error" className="form-error-msg">
-                  <span role="img" aria-label="Error">❌</span> Ingresa un correo electrónico válido en el formato tu@correo.com.
+                  <span role="img" aria-label="Error">❌</span> {t.emailError}
                 </div>
               </div>
 
@@ -611,10 +666,10 @@ export function ContactFormsSection({
               >
                 <div className="form-field">
                   <label htmlFor="programa-country" className="form-label">
-                    País y ciudad <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
+                    {t.countryLabel} <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                   </label>
                   <span id="programa-country-hint" className="form-hint">
-                    Para coordinar nuestros encuentros según tu zona horaria.
+                    {t.countryHint}
                   </span>
                   <input
                     type="text"
@@ -629,16 +684,16 @@ export function ContactFormsSection({
                     className="form-input"
                   />
                   <div id="programa-country-error" className="form-error-msg">
-                    <span role="img" aria-label="Error">❌</span> Indica desde qué país o ciudad nos escribes.
+                    <span role="img" aria-label="Error">❌</span> {t.countryError}
                   </div>
                 </div>
 
                 <div className="form-field">
                   <label htmlFor="programa-phone" className="form-label">
-                    WhatsApp / Teléfono (opcional)
+                    {t.phoneLabel}
                   </label>
                   <span id="programa-phone-hint" className="form-hint">
-                    Incluye el código de tu país (ej. +56, +52, +34).
+                    {t.phoneHint}
                   </span>
                   <input
                     type="tel"
@@ -654,11 +709,11 @@ export function ContactFormsSection({
 
               <div className="form-field">
                 <label htmlFor="programa-context" className="form-label">
-                  ¿En qué etapa te encuentras y qué buscas construir en estos tres meses?{' '}
+                  {t.programGoalLabel}{' '}
                   <span aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }}>*</span>
                 </label>
                 <span id="programa-context-hint" className="form-hint">
-                  Comparte brevemente tu momento profesional o personal actual.
+                  {t.programGoalHint}
                 </span>
                 <textarea
                   id="programa-context"
@@ -671,7 +726,7 @@ export function ContactFormsSection({
                   className="form-textarea"
                 />
                 <div id="programa-context-error" className="form-error-msg">
-                  <span role="img" aria-label="Error">❌</span> Cuéntame brevemente (al menos 10 caracteres) qué buscas trabajar en el programa.
+                  <span role="img" aria-label="Error">❌</span> {t.programGoalError}
                 </div>
               </div>
 

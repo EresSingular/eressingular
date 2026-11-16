@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import {
   ArrowRight,
@@ -15,7 +15,7 @@ import {
   Youtube,
   Mail,
 } from 'lucide-react';
-import type { SiteContent } from '@/content/siteContent';
+import { getSiteContent, type SiteContent, type Locale } from '@/content/siteContent';
 import { Navbar } from './Navbar';
 import { MirrorSection } from './MirrorSection';
 import { ExperiencesSection } from './ExperiencesSection';
@@ -25,7 +25,8 @@ import { GistesySignature } from './GistesySignature';
 import { AudienceCarousel } from './AudienceCarousel';
 
 interface LandingPageClientProps {
-  content: SiteContent;
+  content?: SiteContent;
+  initialLocale?: Locale;
 }
 
 function TikTokIcon({ size = 18 }: { size?: number }) {
@@ -42,14 +43,51 @@ function TikTokIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-export function LandingPageClient({ content }: LandingPageClientProps) {
+export function LandingPageClient({
+  content: initialContent,
+  initialLocale = 'es',
+}: LandingPageClientProps) {
+  const [locale, setLocale] = useState<Locale>(initialLocale);
   const [selectedFormTab, setSelectedFormTab] = useState<'sesion' | 'programa'>('sesion');
   const videoDialogRef = useRef<HTMLDialogElement | null>(null);
+
+  useEffect(() => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const langParam = urlParams.get('lang');
+      if (langParam === 'en' || langParam === 'es') {
+        setLocale(langParam as Locale);
+        return;
+      }
+      const savedLang = localStorage.getItem('es_locale');
+      if (savedLang === 'en' || savedLang === 'es') {
+        setLocale(savedLang as Locale);
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const handleLocaleChange = (newLocale: Locale) => {
+    setLocale(newLocale);
+    try {
+      localStorage.setItem('es_locale', newLocale);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', newLocale);
+      window.history.replaceState({}, '', url.toString());
+    } catch {
+      // ignore
+    }
+  };
+
+  const content = getSiteContent(locale);
 
   return (
     <>
       <Navbar
         content={content}
+        currentLocale={locale}
+        onLocaleChange={handleLocaleChange}
         onSelectExperienceForm={(tab) => setSelectedFormTab(tab)}
       />
 
@@ -278,7 +316,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
         {/* =========================================================
             SECCIÓN 02 — EL ESPEJO (#el-espejo)
            ========================================================= */}
-        <MirrorSection content={content.mirror} />
+        <MirrorSection content={content.mirror} locale={locale} />
 
         {/* =========================================================
             SECCIÓN 03 — LA METODOLOGÍA (#mi-enfoque)
@@ -353,7 +391,9 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                     letterSpacing: '0.04em',
                   }}
                 >
-                  Mirar → Reconocer → Comprender → Elegir → Expresar
+                  {locale === 'en'
+                    ? 'Observe → Recognize → Understand → Choose → Express'
+                    : 'Mirar → Reconocer → Comprender → Elegir → Expresar'}
                 </div>
               </div>
 
@@ -572,7 +612,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
               <div className="methods-integration-bar">
                 <div className="methods-integration-header">
                   <Layers size={16} aria-hidden="true" />
-                  <span>Ejes que integra el acompañamiento:</span>
+                  <span>{locale === 'en' ? 'Integrated mentorship pillars:' : 'Ejes que integra el acompañamiento:'}</span>
                 </div>
                 <div className="methods-integration-pills">
                   {content.methodology.integrationAreas.map((area) => (
@@ -588,6 +628,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
             <AudienceCarousel
               audiences={content.methodology.audiences}
               title={content.methodology.audiencesTitle}
+              locale={locale}
             />
           </div>
         </section>
@@ -597,6 +638,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
            ========================================================= */}
         <ExperiencesSection
           content={content.experiences}
+          locale={locale}
           onSelectExperienceForm={(tab) => setSelectedFormTab(tab)}
         />
 
@@ -768,6 +810,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
         <ContactFormsSection
           content={content.nextStep}
           activeTab={selectedFormTab}
+          locale={locale}
           onTabChange={(tab) => setSelectedFormTab(tab)}
         />
       </main>
@@ -798,7 +841,9 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
 
             {/* Centro: Redes Sociales & Contacto Directo */}
             <div className="footer-social-col">
-              <span className="footer-social-label">CONECTEMOS</span>
+              <span className="footer-social-label">
+                {locale === 'en' ? 'LET’S CONNECT' : 'CONECTEMOS'}
+              </span>
               <div className="footer-social-icons">
                 <a
                   href={content.footer.socialLinks.find((s) => s.id === 'linkedin')?.href || '#'}
@@ -905,7 +950,37 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
 
           <div className="footer-bottom-bar">
             <span>{content.footer.copyright}</span>
-            <span>{content.footer.futureLanguagesNote}</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+              <span>{content.footer.futureLanguagesNote}</span>
+              <span style={{ opacity: 0.3 }} aria-hidden="true">·</span>
+              <div
+                className="lang-switcher"
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  borderColor: 'rgba(255,255,255,0.14)',
+                  padding: '0.15rem 0.4rem',
+                  minHeight: '28px',
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => handleLocaleChange('es')}
+                  className={`lang-btn ${locale === 'es' ? 'is-active' : ''}`}
+                  style={{ color: locale === 'es' ? '#FFFFFF' : 'var(--color-gray-400)' }}
+                >
+                  Español
+                </button>
+                <span className="lang-divider" style={{ color: 'rgba(255,255,255,0.3)' }} aria-hidden="true">/</span>
+                <button
+                  type="button"
+                  onClick={() => handleLocaleChange('en')}
+                  className={`lang-btn ${locale === 'en' ? 'is-active' : ''}`}
+                  style={{ color: locale === 'en' ? '#FFFFFF' : 'var(--color-gray-400)' }}
+                >
+                  English
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

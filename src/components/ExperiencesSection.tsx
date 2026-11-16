@@ -2,15 +2,17 @@
 
 import React, { useRef, useEffect } from 'react';
 import { Clock, Calendar, ArrowRight, Eye, X, CheckCircle2 } from 'lucide-react';
-import type { SiteContent, ExperienceItem } from '@/content/siteContent';
+import type { SiteContent, ExperienceItem, Locale } from '@/content/siteContent';
 
 interface ExperiencesSectionProps {
   content: SiteContent['experiences'];
+  locale?: Locale;
   onSelectExperienceForm: (tab: 'sesion' | 'programa') => void;
 }
 
 export function ExperiencesSection({
   content,
+  locale = 'es',
   onSelectExperienceForm,
 }: ExperiencesSectionProps) {
   const sessionDialogRef = useRef<HTMLDialogElement | null>(null);
@@ -182,7 +184,7 @@ export function ExperiencesSection({
         {/* Qué trabajamos */}
         <div>
           <h4 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--color-white)' }}>
-            ¿Qué recorremos en esta experiencia?
+            {locale === 'en' ? 'What do we explore in this experience?' : '¿Qué recorremos en esta experiencia?'}
           </h4>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
             {item.expandedView.whatWeExplore.map((point) => (
@@ -217,7 +219,7 @@ export function ExperiencesSection({
           }}
         >
           <h4 style={{ fontSize: '0.95rem', fontWeight: 600, marginBottom: '0.65rem', color: 'var(--color-white)' }}>
-            Próximos pasos para comenzar:
+            {locale === 'en' ? 'Next steps to begin:' : 'Próximos pasos para comenzar:'}
           </h4>
           <ol style={{ paddingLeft: '1.15rem', display: 'flex', flexDirection: 'column', gap: '0.45rem', color: 'var(--color-gray-300)', fontSize: '0.92rem' }}>
             {item.expandedView.nextSteps.map((step) => (
@@ -238,7 +240,7 @@ export function ExperiencesSection({
         >
           <form method="dialog">
             <button type="submit" value="cancel" className="btn btn-outline-dark">
-              Seguir leyendo la web
+              {locale === 'en' ? 'Keep exploring the website' : 'Seguir leyendo la web'}
             </button>
           </form>
 

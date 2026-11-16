@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ArrowRight } from 'lucide-react';
-import type { SiteContent } from '@/content/siteContent';
+import type { SiteContent, Locale } from '@/content/siteContent';
 
 interface MirrorSectionProps {
   content: SiteContent['mirror'];
+  locale?: Locale;
 }
 
-export function MirrorSection({ content }: MirrorSectionProps) {
+export function MirrorSection({ content, locale = 'es' }: MirrorSectionProps) {
   const [activeId, setActiveId] = useState<string>(content.questions[0]?.id ?? 'q1');
   const [personalNotes, setPersonalNotes] = useState<Record<string, string>>({});
 
@@ -127,7 +128,9 @@ export function MirrorSection({ content }: MirrorSectionProps) {
                         marginBottom: '0.4rem',
                       }}
                     >
-                      Apunte personal para ti (opcional y privado en tu pantalla; no se envía ni almacena):
+                      {locale === 'en'
+                        ? 'Personal note for you (optional & private on your screen; not sent or stored):'
+                        : 'Apunte personal para ti (opcional y privado en tu pantalla; no se envía ni almacena):'}
                     </label>
                     <input
                       id={noteInputId}
@@ -136,7 +139,11 @@ export function MirrorSection({ content }: MirrorSectionProps) {
                       onChange={(e) =>
                         setPersonalNotes((prev) => ({ ...prev, [item.id]: e.target.value }))
                       }
-                      placeholder="Escribe una idea, recuerdo o palabra que te venga a la mente..."
+                      placeholder={
+                        locale === 'en'
+                          ? 'Write an idea, memory, or word that comes to mind...'
+                          : 'Escribe una idea, recuerdo o palabra que te venga a la mente...'
+                      }
                       style={{
                         width: '100%',
                         border: 'none',
