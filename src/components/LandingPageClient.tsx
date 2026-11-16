@@ -18,6 +18,7 @@ import { MirrorSection } from './MirrorSection';
 import { ExperiencesSection } from './ExperiencesSection';
 import { StoriesSection } from './StoriesSection';
 import { ContactFormsSection } from './ContactFormsSection';
+import { GistesySignature } from './GistesySignature';
 
 interface LandingPageClientProps {
   content: SiteContent;
@@ -93,22 +94,11 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   />
                   <figcaption className="hero-portrait-caption">
                     <div>
-                      <div
-                        className="font-gistesy"
-                        style={{
-                          fontSize: '1.75rem',
-                          color: 'var(--color-white)',
-                          lineHeight: 1.1,
-                        }}
-                      >
-                        {content.brand.authorFullName}{' '}
-                        <span
-                          className="font-display-montserrat"
-                          style={{ fontSize: '0.95rem', fontWeight: 600 }}
-                        >
-                          ツ
-                        </span>
-                      </div>
+                      <GistesySignature
+                        fontSize="1.7rem"
+                        smileyFontSize="0.95rem"
+                        color="var(--color-white)"
+                      />
                       <div
                         style={{
                           fontSize: '0.78rem',
@@ -681,18 +671,11 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                       gap: '0.75rem',
                     }}
                   >
-                    <span
-                      className="font-gistesy"
-                      style={{ fontSize: '1.75rem', color: 'var(--color-white)' }}
-                    >
-                      {content.aboutFer.mainPortrait.caption}{' '}
-                      <span
-                        className="font-display-montserrat"
-                        style={{ fontSize: '0.95rem', fontWeight: 600 }}
-                      >
-                        ツ
-                      </span>
-                    </span>
+                    <GistesySignature
+                      fontSize="1.7rem"
+                      smileyFontSize="0.95rem"
+                      color="var(--color-white)"
+                    />
                     <span
                       style={{
                         color: 'var(--color-magenta-light)',
@@ -751,21 +734,12 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 >
                   {content.aboutFer.title}
                 </h2>
-                <div
-                  className="font-gistesy"
-                  style={{
-                    fontSize: 'clamp(2.35rem, 4vw, 3.35rem)',
-                    color: 'var(--color-black)',
-                    marginBottom: '0.35rem',
-                  }}
-                >
-                  {content.brand.authorFullName}{' '}
-                  <span
-                    className="font-display-montserrat"
-                    style={{ fontSize: '1.25rem', fontWeight: 700 }}
-                  >
-                    ツ
-                  </span>
+                <div style={{ marginBottom: '0.35rem' }}>
+                  <GistesySignature
+                    fontSize="clamp(2.2rem, 3.6vw, 3.1rem)"
+                    smileyFontSize="1.2rem"
+                    color="var(--color-black)"
+                  />
                 </div>
                 <p
                   style={{
@@ -880,18 +854,11 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   </blockquote>
 
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.14)', paddingTop: '0.95rem' }}>
-                    <div
-                      className="font-gistesy"
-                      style={{ fontSize: '2.25rem', color: 'var(--color-white)', lineHeight: 1.15 }}
-                    >
-                      {content.aboutFer.signatureName}{' '}
-                      <span
-                        className="font-display-montserrat"
-                        style={{ fontSize: '1.1rem', fontWeight: 600 }}
-                      >
-                        ツ
-                      </span>
-                    </div>
+                    <GistesySignature
+                      fontSize="2.15rem"
+                      smileyFontSize="1.05rem"
+                      color="var(--color-white)"
+                    />
                     <div
                       style={{
                         fontSize: '0.9rem',
@@ -922,76 +889,57 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
       {/* =========================================================
           PIE DE PÁGINA / FOOTER
          ========================================================= */}
-      <footer
-        style={{
-          backgroundColor: '#070709',
-          color: 'var(--color-gray-400)',
-          borderTop: '1px solid rgba(255,255,255,0.08)',
-          paddingBlock: '3.5rem',
-        }}
-      >
+      <footer className="site-footer">
         <div className="container">
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'flex-start',
-              justifyContent: 'space-between',
-              gap: '2rem',
-              paddingBottom: '2rem',
-              borderBottom: '1px solid rgba(255,255,255,0.08)',
-            }}
-          >
-            <div style={{ maxWidth: '52ch' }}>
+          <div className="footer-top-grid">
+            {/* Izquierda: Marca y manifiesto */}
+            <div style={{ maxWidth: '42ch' }}>
               <div
                 className="font-brittany"
                 style={{
-                  fontSize: '2.2rem',
+                  fontSize: '1.75rem',
                   color: '#FFFFFF',
-                  marginBottom: '0.85rem',
+                  marginBottom: '0.75rem',
                   lineHeight: 1.1,
                 }}
               >
                 Eres Singular
               </div>
-              <p style={{ color: 'var(--color-gray-300)', fontSize: '0.96rem', lineHeight: 1.7 }}>
+              <p style={{ color: 'var(--color-gray-300)', fontSize: '0.88rem', lineHeight: 1.7 }}>
                 {content.footer.manifesto}
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-              <div
-                className="font-gistesy"
-                style={{ color: 'var(--color-white)', fontSize: '2.1rem', lineHeight: 1.15 }}
+            {/* Centro: Navegación compacta */}
+            <nav aria-label="Navegación pie de página" className="footer-nav">
+              {content.nav.items.map((item) => (
+                <a key={item.href} href={item.href} className="footer-nav-link">
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Derecha: Firma armónica */}
+            <div className="footer-signature">
+              <GistesySignature
+                fontSize="1.48rem"
+                smileyFontSize="0.85rem"
+                color="var(--color-white)"
+              />
+              <span
+                style={{
+                  color: 'var(--color-magenta-light)',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.02em',
+                }}
               >
-                {content.brand.authorFullName}{' '}
-                <span
-                  className="font-display-montserrat"
-                  style={{ fontSize: '1rem', fontWeight: 600 }}
-                >
-                  ツ
-                </span>
-              </div>
-              <span style={{ color: 'var(--color-magenta-light)', fontSize: '0.88rem', fontWeight: 700 }}>
                 {content.brand.authorRole}
-              </span>
-              <span style={{ fontSize: '0.85rem', marginTop: '0.3rem' }}>
-                Sesión individual 80 min (US$ 150) · Programa 3 meses, 13 sesiones (US$ 1.490)
               </span>
             </div>
           </div>
 
-          <div
-            style={{
-              paddingTop: '1.5rem',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '1rem',
-              fontSize: '0.82rem',
-            }}
-          >
+          <div className="footer-bottom-bar">
             <span>{content.footer.copyright}</span>
             <span>{content.footer.futureLanguagesNote}</span>
           </div>

@@ -56,7 +56,7 @@ export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
             <span
               className="brand-logo brand-logo-dark font-brittany"
               style={{
-                fontSize: '1.85rem',
+                fontSize: '1.62rem',
                 color: '#FFFFFF',
                 whiteSpace: 'nowrap',
                 lineHeight: 1,
@@ -85,16 +85,14 @@ export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
               className="experience-pill experience-pill-secondary"
             >
               <span>{content.nav.quickAccess.sessionLabel}</span>
-              <span className="experience-pill-price">{content.nav.quickAccess.sessionPrice}</span>
             </button>
             <button
               type="button"
               onClick={() => handleQuickExperienceClick('programa')}
               className="experience-pill experience-pill-cta"
             >
-              <Sparkles size={14} aria-hidden="true" />
+              <Sparkles size={13} aria-hidden="true" />
               <span>{content.nav.quickAccess.programLabel}</span>
-              <span className="experience-pill-cta-price">{content.nav.quickAccess.programPrice}</span>
             </button>
           </div>
 
@@ -158,8 +156,8 @@ export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
                   className="btn btn-outline-dark"
                   style={{ width: '100%', justifyContent: 'space-between' }}
                 >
-                  <span>Sesión individual (80 min)</span>
-                  <span style={{ color: 'var(--color-magenta-light)', fontWeight: 800 }}>US$ 150</span>
+                  <span>{content.nav.quickAccess.sessionLabel}</span>
+                  <span style={{ color: 'var(--color-magenta-light)', fontWeight: 700, fontSize: '0.82rem' }}>80 min</span>
                 </button>
                 <button
                   type="button"
@@ -167,8 +165,8 @@ export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
                   className="btn btn-primary"
                   style={{ width: '100%', justifyContent: 'space-between' }}
                 >
-                  <span>Programa Eres Singular (3 meses)</span>
-                  <span style={{ fontWeight: 800 }}>US$ 1.490</span>
+                  <span>{content.nav.quickAccess.programLabel}</span>
+                  <span style={{ fontWeight: 700, fontSize: '0.82rem' }}>3 meses · 13 sesiones</span>
                 </button>
               </div>
             </nav>

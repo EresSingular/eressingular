@@ -452,7 +452,7 @@ export function ContactFormsSection({
 
               <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
                 <Send size={18} aria-hidden="true" />
-                <span>{sessionMeta.submitLabel} (US$ 150)</span>
+                <span>{sessionMeta.submitLabel}</span>
               </button>
             </form>
           )}
@@ -677,7 +677,7 @@ export function ContactFormsSection({
 
               <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
                 <Send size={18} aria-hidden="true" />
-                <span>{programMeta.submitLabel} (US$ 1.490)</span>
+                <span>{programMeta.submitLabel}</span>
               </button>
             </form>
           )}

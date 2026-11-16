@@ -79,9 +79,7 @@ export interface SiteContent {
     items: { label: string; href: string }[];
     quickAccess: {
       sessionLabel: string;
-      sessionPrice: string;
       programLabel: string;
-      programPrice: string;
     };
   };
   hero: {
@@ -283,10 +281,8 @@ export const siteContentEs: SiteContent = {
       { label: 'Contacto', href: '#contacto' },
     ],
     quickAccess: {
-      sessionLabel: 'Sesión 80 min',
-      sessionPrice: 'US$ 150',
-      programLabel: 'Programa 3 meses',
-      programPrice: 'US$ 1.490',
+      sessionLabel: 'Sesión 1 a 1',
+      programLabel: 'Programa',
     },
   },
   hero: {
