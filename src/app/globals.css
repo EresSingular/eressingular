@@ -850,6 +850,191 @@ select {
   color: #FFFFFF;
 }
 
+/* Carrusel interactivo ¿Para quién es Eres Singular? */
+.audience-carousel-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  overflow: hidden;
+}
+
+.audience-carousel-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.audience-carousel-title {
+  font-size: clamp(1.4rem, 2vw, 1.78rem);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+.audience-carousel-brittany {
+  font-size: 1.28em;
+  font-weight: 400;
+  color: var(--color-magenta-light);
+  margin-inline: 0.2rem;
+}
+
+.audience-carousel-subtitle {
+  color: var(--color-gray-400);
+  font-size: 0.88rem;
+  margin-top: 0.35rem;
+  line-height: 1.5;
+}
+
+.audience-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.audience-carousel-counter {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-magenta-light);
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 3, 154, 0.12);
+  border: 1px solid rgba(255, 3, 154, 0.28);
+  border-radius: 999px;
+}
+
+.audience-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.audience-nav-btn:hover {
+  background: rgba(255, 3, 154, 0.2);
+  border-color: var(--color-magenta);
+  color: var(--color-magenta-light);
+  transform: translateY(-2px);
+}
+
+.audience-carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding-block: 0.25rem;
+}
+
+.audience-carousel-track {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.audience-card {
+  background: linear-gradient(160deg, rgba(23, 24, 30, 0.95) 0%, rgba(12, 13, 17, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-md);
+  padding: 1.65rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.15rem;
+  min-height: 220px;
+  position: relative;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.audience-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 3, 154, 0.45);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5);
+}
+
+.audience-card-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.audience-card-number {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-magenta-light);
+  letter-spacing: 0.06em;
+}
+
+.audience-card-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 3, 154, 0.18);
+  color: var(--color-magenta-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audience-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.35;
+}
+
+.audience-card-description {
+  font-size: 0.88rem;
+  color: var(--color-gray-300);
+  line-height: 1.65;
+}
+
+.audience-card-bottom-line {
+  height: 2px;
+  width: 28px;
+  background: var(--color-magenta);
+  border-radius: 2px;
+  transition: width var(--transition-smooth);
+}
+
+.audience-card:hover .audience-card-bottom-line {
+  width: 100%;
+}
+
+.audience-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.audience-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-smooth);
+}
+
+.audience-dot.is-active {
+  width: 24px;
+  background: var(--color-magenta);
+}
+
 /* Sección 04 — Dos Experiencias */
 .experiences-grid {
   display: grid;

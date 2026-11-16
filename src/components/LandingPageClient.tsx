@@ -22,6 +22,7 @@ import { ExperiencesSection } from './ExperiencesSection';
 import { StoriesSection } from './StoriesSection';
 import { ContactFormsSection } from './ContactFormsSection';
 import { GistesySignature } from './GistesySignature';
+import { AudienceCarousel } from './AudienceCarousel';
 
 interface LandingPageClientProps {
   content: SiteContent;
@@ -583,72 +584,11 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
               </div>
             </div>
 
-            {/* ¿Para quién es Eres Singular? */}
-            <div
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 'var(--radius-lg)',
-                padding: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-              }}
-            >
-              <h3
-                className="font-display-montserrat"
-                style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginBottom: '1.5rem' }} /* ~28.5px (26–30px) */
-              >
-                ¿Para quién es{' '}
-                <span
-                  className="font-brittany"
-                  style={{
-                    fontSize: '1.28em',
-                    fontWeight: 400,
-                    color: 'var(--color-magenta-light)',
-                    marginInline: '0.2rem',
-                  }}
-                >
-                  Eres Singular
-                </span>
-                ?
-              </h3>
-
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-                  gap: '1.25rem',
-                }}
-              >
-                {content.methodology.audiences.map((aud) => (
-                  <div
-                    key={aud.title}
-                    style={{
-                      padding: '1.15rem',
-                      borderRadius: 'var(--radius-md)',
-                      background: 'rgba(11,11,13,0.65)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem',
-                        color: 'var(--color-white)',
-                        fontWeight: 700,
-                        fontSize: '0.96rem',
-                        marginBottom: '0.45rem',
-                      }}
-                    >
-                      <Check size={16} aria-hidden="true" style={{ color: 'var(--color-magenta-light)', flexShrink: 0 }} />
-                      <span>{aud.title}</span>
-                    </div>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
-                      {aud.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* ¿Para quién es Eres Singular? — Carrusel dinámico con movimiento */}
+            <AudienceCarousel
+              audiences={content.methodology.audiences}
+              title={content.methodology.audiencesTitle}
+            />
           </div>
         </section>
 
