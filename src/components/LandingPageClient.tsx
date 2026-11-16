@@ -144,14 +144,15 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   display: 'flex',
                   flexWrap: 'wrap',
                   alignItems: 'center',
-                  gap: '0.65rem 1.5rem',
+                  gap: '0.5rem 1rem',
+                  flex: '1 1 500px',
                 }}
               >
                 <span
                   style={{
                     fontSize: '0.72rem',
                     fontWeight: 700,
-                    letterSpacing: '0.12em',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     color: 'var(--color-magenta-light)',
                     background: 'rgba(255, 3, 154, 0.1)',
@@ -163,14 +164,14 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 </span>
                 <span
                   style={{
-                    fontSize: '1rem',
+                    fontSize: '0.96rem',
                     fontWeight: 700,
                     color: 'var(--color-white)',
                   }}
                 >
                   {content.hero.videoPlaceholder.title}
                 </span>
-                <span style={{ fontSize: '0.86rem', color: 'var(--color-gray-400)' }}>
+                <span style={{ fontSize: '0.84rem', color: 'var(--color-gray-400)' }}>
                   · {content.hero.videoPlaceholder.durationHint}
                 </span>
               </div>
@@ -179,7 +180,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 type="button"
                 onClick={() => videoDialogRef.current?.showModal()}
                 className="btn btn-outline-dark"
-                style={{ padding: '0.6rem 1.25rem', minHeight: '46px', flexShrink: 0 }}
+                style={{ padding: '0.55rem 1.2rem', minHeight: '44px', flexShrink: 0 }}
               >
                 <Play size={16} aria-hidden="true" style={{ color: 'var(--color-magenta-light)' }} />
                 <span>Ver espacio de video</span>
