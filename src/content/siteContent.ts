@@ -806,7 +806,7 @@ export const siteContentEs: SiteContent = {
           name: 'DouBBleYou',
           logoSrc: '/images/journey/doubbleyou.png',
           alt: 'DouBBleYou',
-          height: 38,
+          height: 20,
         },
         {
           id: 'netthinking',
@@ -828,6 +828,13 @@ export const siteContentEs: SiteContent = {
           logoSrc: '/images/journey/imcebra.png',
           alt: 'ImCebra',
           height: 26,
+        },
+        {
+          id: 'misombrero',
+          name: 'Mi Sombrero',
+          logoSrc: '/images/journey/misombrero.png',
+          alt: 'Mi Sombrero',
+          height: 34,
         },
       ],
     },

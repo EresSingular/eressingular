@@ -429,7 +429,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   style={{
                     fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
                     fontWeight: 700,
-                    color: 'var(--color-magenta-light)',
+                    color: 'var(--color-white)',
                     letterSpacing: '0.02em',
                     marginBottom: '1.15rem',
                   }}
@@ -517,7 +517,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   style={{
                     fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
                     fontWeight: 700,
-                    color: 'var(--color-magenta-light)',
+                    color: 'var(--color-white)',
                     letterSpacing: '0.02em',
                     marginBottom: '1.15rem',
                   }}
@@ -634,8 +634,8 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
               <p
                 style={{
                   fontSize: '1.02rem',
-                  fontWeight: 700,
-                  color: 'var(--color-magenta)',
+                  fontWeight: 600,
+                  color: 'var(--color-gray-800)',
                 }}
               >
                 {content.aboutFer.subtitle}

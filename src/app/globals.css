@@ -823,7 +823,7 @@ select {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-magenta-light);
+  color: var(--color-gray-300);
   font-weight: 700;
 }
 
@@ -899,12 +899,12 @@ select {
 
 .audience-carousel-counter {
   font-size: 0.82rem;
-  font-weight: 800;
-  color: var(--color-magenta-light);
+  font-weight: 700;
+  color: var(--color-white);
   letter-spacing: 0.08em;
   padding: 0.35rem 0.75rem;
-  background: rgba(255, 3, 154, 0.12);
-  border: 1px solid rgba(255, 3, 154, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
 }
 
@@ -923,9 +923,9 @@ select {
 }
 
 .audience-nav-btn:hover {
-  background: rgba(255, 3, 154, 0.2);
-  border-color: var(--color-magenta);
-  color: var(--color-magenta-light);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
 
@@ -957,7 +957,7 @@ select {
 
 .audience-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 3, 154, 0.45);
+  border-color: rgba(255, 255, 255, 0.28);
   box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5);
 }
 
@@ -971,7 +971,7 @@ select {
 .audience-card-number {
   font-size: 0.8rem;
   font-weight: 800;
-  color: var(--color-magenta-light);
+  color: var(--color-gray-400);
   letter-spacing: 0.06em;
 }
 
@@ -979,8 +979,8 @@ select {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: rgba(255, 3, 154, 0.18);
-  color: var(--color-magenta-light);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-white);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1002,7 +1002,7 @@ select {
 .audience-card-bottom-line {
   height: 2px;
   width: 28px;
-  background: var(--color-magenta);
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 2px;
   transition: width var(--transition-smooth);
 }
@@ -1032,7 +1032,7 @@ select {
 
 .audience-dot.is-active {
   width: 24px;
-  background: var(--color-magenta);
+  background: var(--color-white);
 }
 
 /* Sección 04 — Dos Experiencias */
