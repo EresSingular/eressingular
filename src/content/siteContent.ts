@@ -254,9 +254,9 @@ export const siteContentEs: SiteContent = {
       'Eres Singular',
       'Tejedora de Huella Personal',
     ],
-    ogTitle: 'Eres Singular — Antes de mostrarte al mundo, comienza por mirarte',
+    ogTitle: 'Eres Singular — Antes de mostrarte al mundo, comienza por mirarte tú',
     ogDescription:
-      '¿Qué sabes tú que aún no sabes que sabes? Acompañamiento de autoconocimiento, identidad y marca personal auténtica con Fer (Ma. Fernanda Cortés Espinosa).',
+      '¿Qué sabes, que aún no sabes que sabes? Acompañamiento de autoconocimiento, identidad y marca personal auténtica con Fer (Ma. Fernanda Cortés Espinosa).',
     canonicalUrl: 'https://eressingular.vercel.app',
   },
   brand: {
@@ -265,8 +265,8 @@ export const siteContentEs: SiteContent = {
     authorSignature: 'Ma. Fernanda Cortés Espinosa ツ',
     authorRole: 'Tejedora de Huella Personal',
     phrases: [
-      'Antes de mostrarte al mundo, comienza por mirarte.',
-      '¿Qué sabes tú que aún no sabes que sabes?',
+      'Antes de mostrarte al mundo, comienza por mirarte tú.',
+      '¿Qué sabes, que aún no sabes que sabes?',
       'Tu experiencia tiene valor. Vamos a darle forma y ponerla en movimiento.',
       'No se trata de ser visible, sino inolvidable.',
       'Mi singularidad es ayudar a otros a reconocer la suya.',
@@ -291,8 +291,8 @@ export const siteContentEs: SiteContent = {
   },
   hero: {
     eyebrow: 'Fer · Tejedora de Huella Personal',
-    headline: 'Antes de mostrarte al mundo, comienza por mirarte.',
-    featuredQuestion: '¿Qué sabes tú que aún no sabes que sabes?',
+    headline: 'Antes de mostrarte al mundo, comienza por mirarte tú.',
+    featuredQuestion: '¿Qué sabes, que aún no sabes que sabes?',
     supportingText:
       'Tu historia, tus conocimientos y tu manera de hacer las cosas contienen algo singular. Te acompaño a reconocerlo, darle forma y convertirlo en una expresión auténtica de quién eres.',
     primaryCta: {
@@ -305,7 +305,7 @@ export const siteContentEs: SiteContent = {
     },
     portraitImage: {
       src: '/images/fer-mirarte.png',
-      alt: 'Fer (Ma. Fernanda Cortés Espinosa) — Antes de mostrarte al mundo, comienza por mirarte',
+      alt: 'Fer (Ma. Fernanda Cortés Espinosa) — Antes de mostrarte al mundo, comienza por mirarte tú',
       caption: 'Ma. Fernanda Cortés Espinosa ツ — Tejedora de Huella Personal',
     },
     videoPlaceholder: {
