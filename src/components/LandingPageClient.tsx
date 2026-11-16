@@ -8,7 +8,6 @@ import {
   Compass,
   Layers,
   Sparkles,
-  Camera,
   X,
   Check,
   Linkedin,
@@ -663,135 +662,98 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
           aria-labelledby="about-fer-heading"
         >
           <div className="container">
-            <div className="about-grid">
-              {/* Columna visual: Retrato auténtico + Marcadores claramente identificados */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <figure className="fer-portrait-frame">
+            {/* Encabezado editorial de sección */}
+            <div style={{ maxWidth: '64ch', marginBottom: '2.5rem' }}>
+              <span className="section-eyebrow">{content.aboutFer.eyebrow}</span>
+              <h2
+                id="about-fer-heading"
+                className="section-title"
+                style={{ marginBottom: '0.2rem' }}
+              >
+                {content.aboutFer.title}
+              </h2>
+              <div style={{ marginBottom: '0.35rem' }}>
+                <GistesySignature
+                  fontSize="clamp(2.1rem, 3.4vw, 2.9rem)"
+                  smileyFontSize="1.15rem"
+                  color="var(--color-black)"
+                />
+              </div>
+              <p
+                style={{
+                  fontSize: '1.02rem',
+                  fontWeight: 700,
+                  color: 'var(--color-magenta)',
+                }}
+              >
+                {content.aboutFer.subtitle}
+              </p>
+            </div>
+
+            {/* Cuadrícula editorial equilibrada: Visual + Trayectoria a la izquierda, Relato y Cierre a la derecha */}
+            <div className="about-editorial-grid">
+              {/* Columna Izquierda: Retrato compacto de Fer + Hitos de trayectoria */}
+              <div className="about-visual-col">
+                <div className="fer-portrait-compact">
                   <Image
                     src={content.aboutFer.mainPortrait.src}
                     alt={content.aboutFer.mainPortrait.alt}
-                    width={760}
-                    height={940}
+                    width={480}
+                    height={580}
                     style={{
                       width: '100%',
                       height: 'auto',
+                      maxHeight: '440px',
                       objectFit: 'cover',
+                      display: 'block',
                     }}
                   />
-                  <figcaption
-                    style={{
-                      padding: '1rem 1.25rem',
-                      background: 'var(--color-black)',
-                      color: 'var(--color-white)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: '0.75rem',
-                    }}
-                  >
-                    <GistesySignature
-                      fontSize="1.7rem"
-                      smileyFontSize="0.95rem"
-                      color="var(--color-white)"
-                    />
-                    <span
-                      style={{
-                        color: 'var(--color-magenta-light)',
-                        fontSize: '0.8rem',
-                        fontWeight: 700,
-                      }}
-                    >
-                      {content.brand.authorRole}
-                    </span>
-                  </figcaption>
-                </figure>
+                </div>
 
-                {/* Marcadores claramente identificados para fotografías adicionales de Fer */}
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '1rem',
-                  }}
-                >
-                  {content.aboutFer.mediaPlaceholders.map((slot) => (
-                    <div key={slot.id} className="placeholder-slot">
-                      <div
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.45rem',
-                          fontSize: '0.75rem',
-                          fontWeight: 700,
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.08em',
-                          color: 'var(--color-magenta)',
-                        }}
-                      >
-                        <Camera size={15} aria-hidden="true" />
-                        <span>Marcador fotográfico</span>
+                {/* Hitos de recorrido integrados de forma armónica bajo el retrato */}
+                <div className="about-highlights-stack">
+                  {content.aboutFer.highlights.map((item) => (
+                    <div key={item.label} className="about-highlight-card">
+                      <div className="about-highlight-figure font-display-montserrat">
+                        {item.figure}
                       </div>
-                      <strong style={{ fontSize: '0.92rem', color: 'var(--color-black)' }}>
-                        {slot.label}
-                      </strong>
-                      <p style={{ fontSize: '0.82rem', color: 'var(--color-gray-600)' }}>
-                        {slot.description}
-                      </p>
+                      <div className="about-highlight-label">{item.label}</div>
+                      <p className="about-highlight-detail">{item.detail}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Columna narrativa: Historia humana, trayectoria y firma */}
-              <div>
-                <span className="section-eyebrow">{content.aboutFer.eyebrow}</span>
-                <h2
-                  id="about-fer-heading"
-                  className="section-title"
-                  style={{ marginBottom: '0.2rem' }}
-                >
-                  {content.aboutFer.title}
-                </h2>
-                <div style={{ marginBottom: '0.35rem' }}>
-                  <GistesySignature
-                    fontSize="clamp(2.2rem, 3.6vw, 3.1rem)"
-                    smileyFontSize="1.2rem"
-                    color="var(--color-black)"
-                  />
-                </div>
-                <p
-                  style={{
-                    fontSize: '1.05rem',
-                    fontWeight: 700,
-                    color: 'var(--color-magenta)',
-                    marginBottom: '1.5rem',
-                  }}
-                >
-                  {content.aboutFer.subtitle}
-                </p>
-
+              {/* Columna Derecha: Frase central, Relato y Cierre */}
+              <div className="about-story-col">
                 <p
                   className="font-display-montserrat"
                   style={{
-                    fontSize: 'clamp(1.12rem, 1.5vw, 1.32rem)', /* ~21px frase de apertura */
+                    fontSize: 'clamp(1.1rem, 1.4vw, 1.28rem)',
                     fontWeight: 700,
-                    lineHeight: 1.48,
+                    lineHeight: 1.5,
                     color: 'var(--color-black)',
-                    marginBottom: '1.5rem',
+                    marginBottom: '1.75rem',
                     borderInlineStart: '3.5px solid var(--color-magenta)',
                     paddingInlineStart: '1.1rem',
-                    maxWidth: '56ch',
                   }}
                 >
                   {content.aboutFer.leadParagraph}
                 </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem', marginBottom: '2rem', maxWidth: '62ch' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.2rem',
+                    marginBottom: '2.25rem',
+                  }}
+                >
                   {content.aboutFer.storyParagraphs.map((paragraph, idx) => (
                     <p
                       key={idx}
                       style={{
-                        fontSize: 'clamp(1rem, 1.08vw, 1.06rem)', /* 16–17px párrafo (rango 16–18px) */
+                        fontSize: 'clamp(0.98rem, 1.05vw, 1.05rem)',
                         lineHeight: 1.78,
                         color: 'var(--color-gray-800)',
                       }}
@@ -801,77 +763,31 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                   ))}
                 </div>
 
-                {/* Hitos de recorrido */}
+                {/* Cierre y Firma en tarjeta negra */}
                 <div
                   style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
-                    gap: '1rem',
-                    marginBottom: '2.25rem',
-                  }}
-                >
-                  {content.aboutFer.highlights.map((item) => (
-                    <div
-                      key={item.label}
-                      style={{
-                        padding: '1.15rem',
-                        borderRadius: 'var(--radius-md)',
-                        background: 'var(--color-offwhite)',
-                        border: '1px solid var(--color-gray-200)',
-                      }}
-                    >
-                      <div
-                        className="font-display-montserrat"
-                        style={{
-                          fontSize: '1.35rem',
-                          fontWeight: 800,
-                          color: 'var(--color-magenta)',
-                          lineHeight: 1.15,
-                        }}
-                      >
-                        {item.figure}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: '0.9rem',
-                          fontWeight: 700,
-                          color: 'var(--color-black)',
-                          marginTop: '0.3rem',
-                        }}
-                      >
-                        {item.label}
-                      </div>
-                      <p style={{ fontSize: '0.82rem', color: 'var(--color-gray-600)', marginTop: '0.25rem' }}>
-                        {item.detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Cierre y Firma obligatoria en Gistesy */}
-                <div
-                  style={{
-                    padding: '1.85rem 2.1rem',
+                    padding: '2rem 2.25rem',
                     borderRadius: 'var(--radius-lg)',
                     background: 'var(--color-black)',
                     color: 'var(--color-white)',
                     border: '1px solid rgba(255, 3, 154, 0.35)',
+                    boxShadow: '0 16px 36px -12px rgba(11, 11, 13, 0.25)',
                   }}
                 >
                   <blockquote
                     className="font-display-montserrat"
                     style={{
-                      fontSize: 'clamp(1.25rem, 2vw, 1.65rem)',
+                      fontSize: 'clamp(1.2rem, 1.8vw, 1.5rem)',
                       fontWeight: 700,
-                      lineHeight: 1.35,
-                      marginBottom: '1rem',
+                      lineHeight: 1.38,
+                      marginBottom: '1.25rem',
                       color: 'var(--color-white)',
                     }}
                   >
                     {content.aboutFer.closingQuote}
                   </blockquote>
 
-                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.14)', paddingTop: '0.95rem' }}>
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.14)', paddingTop: '1rem' }}>
                     <GistesySignature
                       fontSize="2.15rem"
                       smileyFontSize="1.05rem"
@@ -879,7 +795,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                     />
                     <div
                       style={{
-                        fontSize: '0.9rem',
+                        fontSize: '0.88rem',
                         color: 'var(--color-magenta-light)',
                         fontWeight: 700,
                         marginTop: '0.2rem',

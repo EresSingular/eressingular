@@ -889,30 +889,74 @@ dialog::backdrop {
   gap: 1.25rem;
 }
 
-/* Sección 06 — Soy Fer */
-.about-grid {
+/* Sección 06 — Soy Fer (Editorial Rediseñado) */
+.about-editorial-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 360px 1fr;
   gap: clamp(2.5rem, 5vw, 4.5rem);
   align-items: start;
 }
 
-.fer-portrait-frame {
+.about-visual-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fer-portrait-compact {
   border-radius: var(--radius-lg);
   overflow: hidden;
   background-color: var(--color-black);
   border: 1px solid var(--color-gray-200);
-  box-shadow: 0 24px 54px -18px rgba(11, 11, 13, 0.25);
+  box-shadow: 0 16px 40px -12px rgba(11, 11, 13, 0.16);
+  max-width: 360px;
 }
 
-.placeholder-slot {
-  border: 1.5px dashed var(--color-magenta-border);
-  background-color: var(--color-offwhite);
-  border-radius: var(--radius-md);
-  padding: 1.35rem;
+.about-highlights-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.85rem;
+  max-width: 360px;
+}
+
+.about-highlight-card {
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-offwhite);
+  border: 1px solid var(--color-gray-200);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.about-highlight-card:hover {
+  border-color: rgba(255, 3, 154, 0.35);
+  transform: translateY(-2px);
+}
+
+.about-highlight-figure {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-magenta);
+  line-height: 1.15;
+}
+
+.about-highlight-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-black);
+  margin-top: 0.25rem;
+}
+
+.about-highlight-detail {
+  font-size: 0.82rem;
+  color: var(--color-gray-600);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
+.about-story-col {
+  display: flex;
+  flex-direction: column;
+  max-width: 62ch;
 }
 
 /* Sección 07 — Formularios accesibles con :user-invalid (modern-web-guidance) */
@@ -1122,20 +1166,29 @@ dialog::backdrop {
 
 .footer-journey-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem 3.5rem;
+  gap: clamp(2rem, 3.8vw, 3.5rem);
   width: 100%;
+  max-width: 980px;
+  margin-inline: auto;
+  overflow-x: auto;
+  padding-block: 0.35rem;
+  scrollbar-width: none;
+}
+
+.footer-journey-row::-webkit-scrollbar {
+  display: none;
 }
 
 .footer-journey-item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.72;
+  flex-shrink: 0;
+  opacity: 0.65;
   transition: opacity var(--transition-smooth), transform var(--transition-smooth);
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
   user-select: none;
 }
 
@@ -1202,7 +1255,22 @@ dialog::backdrop {
     text-align: center;
   }
   .footer-journey-row {
-    gap: 2rem 2.25rem;
+    gap: 1.75rem;
+    justify-content: flex-start;
+    padding-inline: 0.75rem;
+  }
+  .about-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+  .fer-portrait-compact {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+  .about-highlights-stack {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
 
@@ -1216,7 +1284,7 @@ dialog::backdrop {
   .hero-grid,
   .methods-duo-grid,
   .experiences-grid,
-  .about-grid,
+  .about-editorial-grid,
   .forms-selector-tabs,
   .stories-grid {
     grid-template-columns: 1fr;
