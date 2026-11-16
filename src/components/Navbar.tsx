@@ -53,11 +53,17 @@ export function Navbar({ content, onSelectExperienceForm }: NavbarProps) {
               className="brand-logo brand-logo-light"
             />
             {/* Logo versión oscura (al hacer scroll sobre fondo oscuro translúcido) */}
-            <img
-              src="/images/logo-eres-singular-blanco.png"
-              alt="Eres Singular"
-              className="brand-logo brand-logo-dark"
-            />
+            <span
+              className="brand-logo brand-logo-dark font-brittany"
+              style={{
+                fontSize: '1.85rem',
+                color: '#FFFFFF',
+                whiteSpace: 'nowrap',
+                lineHeight: 1,
+              }}
+            >
+              Eres Singular
+            </span>
           </a>
 
           <nav aria-label="Navegación principal" className="header-center-nav">

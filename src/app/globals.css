@@ -394,7 +394,8 @@ select {
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
-  mix-blend-mode: screen;
+  display: inline-flex;
+  align-items: center;
 }
 
 .site-header.is-scrolled .brand-logo-light {

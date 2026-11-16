@@ -943,11 +943,17 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
             }}
           >
             <div style={{ maxWidth: '52ch' }}>
-              <img
-                src="/images/logo-eres-singular-blanco.png"
-                alt="Eres Singular"
-                style={{ height: '54px', width: 'auto', marginBottom: '0.85rem', mixBlendMode: 'screen' }}
-              />
+              <div
+                className="font-brittany"
+                style={{
+                  fontSize: '2.2rem',
+                  color: '#FFFFFF',
+                  marginBottom: '0.85rem',
+                  lineHeight: 1.1,
+                }}
+              >
+                Eres Singular
+              </div>
               <p style={{ color: 'var(--color-gray-300)', fontSize: '0.96rem', lineHeight: 1.7 }}>
                 {content.footer.manifesto}
               </p>
