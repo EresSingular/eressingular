@@ -123,6 +123,7 @@ export interface SiteContent {
     journeySteps: JourneyStep[];
     proprietaryMethods: {
       rda: {
+        category: string;
         acronym: string;
         fullName: string;
         tagline: string;
@@ -130,6 +131,7 @@ export interface SiteContent {
         pillars: { letter: string; word: string; meaning: string }[];
       };
       mapa: {
+        category: string;
         acronym: string;
         fullName: string;
         tagline: string;
@@ -436,6 +438,7 @@ export const siteContentEs: SiteContent = {
     ],
     proprietaryMethods: {
       rda: {
+        category: 'Metodología de Fer',
         acronym: 'RDA',
         fullName: 'Rompe, Domina, Activa',
         tagline: 'Dinámica de movimiento personal y claridad',
@@ -463,6 +466,7 @@ export const siteContentEs: SiteContent = {
         ],
       },
       mapa: {
+        category: 'Herramienta de Fer',
         acronym: 'M.A.P.A.',
         fullName: 'Matriz de Arquitectura Personal Auténtica',
         tagline: 'Estructura viva de identidad y expresión',

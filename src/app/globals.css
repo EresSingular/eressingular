@@ -805,6 +805,51 @@ select {
   padding: clamp(1.75rem, 3.5vw, 2.75rem);
 }
 
+.methods-integration-bar {
+  grid-column: 1 / -1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.methods-integration-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-magenta-light);
+  font-weight: 700;
+}
+
+.methods-integration-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.methods-integration-pill {
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: var(--color-gray-200);
+  transition: all var(--transition-smooth);
+}
+
+.methods-integration-pill:hover {
+  background: rgba(255, 3, 154, 0.12);
+  border-color: rgba(255, 3, 154, 0.35);
+  color: #FFFFFF;
+}
+
 /* Sección 04 — Dos Experiencias */
 .experiences-grid {
   display: grid;

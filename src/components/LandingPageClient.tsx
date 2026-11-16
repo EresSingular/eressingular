@@ -391,7 +391,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
 
             {/* Metodologías propias de Fer: RDA y M.A.P.A. */}
             <div className="methods-duo-grid">
-              {/* RDA */}
+              {/* RDA — Metodología */}
               <article className="method-box" aria-labelledby="method-rda-title">
                 <div
                   style={{
@@ -399,27 +399,44 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                     alignItems: 'center',
                     gap: '0.5rem',
                     color: 'var(--color-magenta-light)',
-                    fontSize: '0.8rem',
+                    fontSize: '0.78rem',
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.12em',
-                    marginBottom: '0.5rem',
+                    marginBottom: '0.65rem',
                   }}
                 >
-                  <Sparkles size={16} aria-hidden="true" />
-                  <span>Metodología de Fer · {content.methodology.proprietaryMethods.rda.tagline}</span>
+                  <Sparkles size={15} aria-hidden="true" />
+                  <span>{content.methodology.proprietaryMethods.rda.category} · {content.methodology.proprietaryMethods.rda.tagline}</span>
                 </div>
 
                 <h3
                   id="method-rda-title"
                   className="font-display-montserrat"
-                  style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginBottom: '0.75rem' }} /* ~28.5px (26–30px) */
+                  style={{
+                    fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+                    fontWeight: 900,
+                    letterSpacing: '0.04em',
+                    color: 'var(--color-white)',
+                    marginBottom: '0.25rem',
+                    lineHeight: 1.05,
+                  }}
                 >
-                  {content.methodology.proprietaryMethods.rda.acronym} —{' '}
-                  {content.methodology.proprietaryMethods.rda.fullName}
+                  {content.methodology.proprietaryMethods.rda.acronym}
                 </h3>
+                <div
+                  style={{
+                    fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
+                    fontWeight: 700,
+                    color: 'var(--color-magenta-light)',
+                    letterSpacing: '0.02em',
+                    marginBottom: '1.15rem',
+                  }}
+                >
+                  {content.methodology.proprietaryMethods.rda.fullName}
+                </div>
 
-                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.5rem', fontSize: '1rem', lineHeight: 1.7, maxWidth: '56ch' }}>
+                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.75rem', fontSize: '1rem', lineHeight: 1.7, maxWidth: '56ch' }}>
                   {content.methodology.proprietaryMethods.rda.description}
                 </p>
 
@@ -431,7 +448,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                         display: 'flex',
                         gap: '1rem',
                         alignItems: 'flex-start',
-                        padding: '0.9rem 1rem',
+                        padding: '1rem 1.15rem',
                         background: 'rgba(255,255,255,0.03)',
                         borderRadius: 'var(--radius-sm)',
                         borderInlineStart: '3px solid var(--color-magenta-light)',
@@ -453,7 +470,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                         <strong style={{ color: 'var(--color-white)', display: 'block', fontWeight: 700 }}>
                           {pillar.word}
                         </strong>
-                        <span style={{ fontSize: '0.9rem', color: 'var(--color-gray-300)' }}>
+                        <span style={{ fontSize: '0.9rem', color: 'var(--color-gray-300)', lineHeight: 1.6 }}>
                           {pillar.meaning}
                         </span>
                       </div>
@@ -462,7 +479,7 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                 </div>
               </article>
 
-              {/* M.A.P.A. */}
+              {/* M.A.P.A. — Herramienta */}
               <article className="method-box" aria-labelledby="method-mapa-title">
                 <div
                   style={{
@@ -470,39 +487,56 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                     alignItems: 'center',
                     gap: '0.5rem',
                     color: 'var(--color-magenta-light)',
-                    fontSize: '0.8rem',
+                    fontSize: '0.78rem',
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.12em',
-                    marginBottom: '0.5rem',
+                    marginBottom: '0.65rem',
                   }}
                 >
-                  <Compass size={16} aria-hidden="true" />
-                  <span>Metodología de Fer · {content.methodology.proprietaryMethods.mapa.tagline}</span>
+                  <Compass size={15} aria-hidden="true" />
+                  <span>{content.methodology.proprietaryMethods.mapa.category} · {content.methodology.proprietaryMethods.mapa.tagline}</span>
                 </div>
 
                 <h3
                   id="method-mapa-title"
                   className="font-display-montserrat"
-                  style={{ fontSize: 'clamp(1.4rem, 2vw, 1.78rem)', fontWeight: 800, marginBottom: '0.75rem' }} /* ~28.5px (26–30px) */
+                  style={{
+                    fontSize: 'clamp(2rem, 3vw, 2.5rem)',
+                    fontWeight: 900,
+                    letterSpacing: '0.04em',
+                    color: 'var(--color-white)',
+                    marginBottom: '0.25rem',
+                    lineHeight: 1.05,
+                  }}
                 >
-                  {content.methodology.proprietaryMethods.mapa.acronym} —{' '}
-                  {content.methodology.proprietaryMethods.mapa.fullName}
+                  {content.methodology.proprietaryMethods.mapa.acronym}
                 </h3>
+                <div
+                  style={{
+                    fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
+                    fontWeight: 700,
+                    color: 'var(--color-magenta-light)',
+                    letterSpacing: '0.02em',
+                    marginBottom: '1.15rem',
+                  }}
+                >
+                  {content.methodology.proprietaryMethods.mapa.fullName}
+                </div>
 
-                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.5rem', fontSize: '1rem', lineHeight: 1.7, maxWidth: '56ch' }}>
+                <p style={{ color: 'var(--color-gray-300)', marginBottom: '1.75rem', fontSize: '1rem', lineHeight: 1.7, maxWidth: '56ch' }}>
                   {content.methodology.proprietaryMethods.mapa.description}
                 </p>
 
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
                   {content.methodology.proprietaryMethods.mapa.dimensions.map((dim, idx) => (
                     <li
                       key={dim}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.85rem',
-                        padding: '0.9rem 1rem',
+                        gap: '0.9rem',
+                        padding: '0.95rem 1.15rem',
                         background: 'rgba(255,255,255,0.03)',
                         borderRadius: 'var(--radius-sm)',
                         border: '1px solid rgba(255,255,255,0.07)',
@@ -525,50 +559,28 @@ export function LandingPageClient({ content }: LandingPageClientProps) {
                       >
                         0{idx + 1}
                       </span>
-                      <span style={{ fontSize: '0.95rem', color: 'var(--color-white)', fontWeight: 600 }}>
+                      <span style={{ fontSize: '0.95rem', color: 'var(--color-white)', fontWeight: 600, lineHeight: 1.5 }}>
                         {dim}
                       </span>
                     </li>
                   ))}
                 </ul>
-
-                {/* Qué integra Eres Singular */}
-                <div style={{ marginTop: '1.75rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.45rem',
-                      fontSize: '0.8rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.1em',
-                      color: 'var(--color-gray-400)',
-                      marginBottom: '0.75rem',
-                      fontWeight: 700,
-                    }}
-                  >
-                    <Layers size={14} aria-hidden="true" />
-                    <span>Ejes que integra el acompañamiento:</span>
-                  </div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
-                    {content.methodology.integrationAreas.map((area) => (
-                      <span
-                        key={area}
-                        style={{
-                          fontSize: '0.8rem',
-                          fontWeight: 500,
-                          padding: '0.35rem 0.75rem',
-                          borderRadius: '999px',
-                          background: 'rgba(255,255,255,0.06)',
-                          color: 'var(--color-gray-300)',
-                        }}
-                      >
-                        {area}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </article>
+
+              {/* Ejes que integra el acompañamiento: abarca ambas columnas porque pertenece a ambos */}
+              <div className="methods-integration-bar">
+                <div className="methods-integration-header">
+                  <Layers size={16} aria-hidden="true" />
+                  <span>Ejes que integra el acompañamiento:</span>
+                </div>
+                <div className="methods-integration-pills">
+                  {content.methodology.integrationAreas.map((area) => (
+                    <span key={area} className="methods-integration-pill">
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* ¿Para quién es Eres Singular? */}
